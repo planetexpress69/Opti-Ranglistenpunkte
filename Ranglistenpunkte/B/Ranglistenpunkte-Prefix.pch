@@ -1,0 +1,24 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <MKNetworkKit/MKNetworkKit.h>
+#endif
+
+#define THEAPPID    @"B"
+#define THECOLOR    [UIColor colorWithRed:255.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f]
+#define THEWHITE    [UIColor whiteColor]
+#define LIGHTBACK   [UIColor colorWithRed:0.937255 green:0.937255 blue:0.937255 alpha:1.0f]
+#define THEAPIPATH  @"/api/8x47h5xs" 
+#define THEAPIKEY   @"04ac821fe0f3bd9c2905f196ab7ddb15"

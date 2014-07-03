@@ -1,0 +1,32 @@
+[
+    {
+        "id" : 1,
+        "title" : "Ranglistenregatta",
+        "factor" : 1.0
+    },
+    {
+        "id" : 2,
+        "title" : "IDJüM",
+        "factor" : 1.1
+    },
+    {
+        "id" : 3,
+        "title" : "Weltmeisterschaft",
+        "factor" : 1.4
+    },
+    {
+        "id" : 4,
+        "title" : "Europameisterschaft",
+        "factor" : 1.3
+    },
+    {
+        "id" : 5,
+        "title" : "NAM",
+        "factor" : 1.3
+    },
+    {
+        "id" : 6,
+        "title" : "WMA-EMA-Finale",
+        "factor" : 1.1
+    }
+]
