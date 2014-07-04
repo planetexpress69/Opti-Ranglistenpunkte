@@ -1,10 +1,10 @@
 Ranglistenpunkte
 ================
 
-A tiny calculator to score regatta results. Currently there are two branches:
+A tiny calculator to score regatta results. Currently there are two build targets:
 
-* master-opti-a - according to the rules of the German Optimist Dinghy Association (DODV)
-* master-opti-b - according to the rules of the opti-mv.de website.
+* A - according to the rules of the German Optimist Dinghy Association (DODV) as seen on the dodv.org website.
+* B - according to the rules of the opti-mv.de website.
 
 
 Environments in which to run Ranglistenpunkte
