@@ -1,0 +1,54 @@
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "14s-ol-424"; */
+"14s-ol-424.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "4fn-dY-n0Q"; */
+"4fn-dY-n0Q.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Deine Punkte"; ObjectID = "5LQ-a3-eCg"; */
+"5LQ-a3-eCg.text" = "Deine Punkte";
+
+/* Class = "IBUILabel"; text = "2222"; ObjectID = "6gg-N2-ARS"; */
+"6gg-N2-ARS.text" = "2222";
+
+/* Class = "IBUILabel"; text = "Punkte 1. Platz"; ObjectID = "9nZ-oZ-Odp"; */
+"9nZ-oZ-Odp.text" = "Punkte 1. Platz";
+
+/* Class = "IBUILabel"; text = "Name der Regatta"; ObjectID = "B39-ud-3xh"; */
+"B39-ud-3xh.text" = "Name der Regatta";
+
+/* Class = "IBUINavigationItem"; title = "Root View Controller"; ObjectID = "R1i-YF-3Ea"; */
+"R1i-YF-3Ea.title" = "Root View Controller";
+
+/* Class = "IBUILabel"; text = "999,99"; ObjectID = "RmL-e7-gxl"; */
+"RmL-e7-gxl.text" = "999,99";
+
+/* Class = "IBUIButton"; normalTitle = "Button"; ObjectID = "bRj-tA-Sr4"; */
+"bRj-tA-Sr4.normalTitle" = "Button";
+
+/* Class = "IBUILabel"; text = "Dein Platz"; ObjectID = "fM5-pE-NIe"; */
+"fM5-pE-NIe.text" = "Dein Platz";
+
+/* Class = "IBUINavigationItem"; title = "DetailView"; ObjectID = "gKz-tJ-D1z"; */
+"gKz-tJ-D1z.title" = "DetailView";
+
+/* Class = "IBUILabel"; text = "GER 99999"; ObjectID = "gbe-91-flj"; */
+"gbe-91-flj.text" = "GER 99999";
+
+/* Class = "IBUILabel"; text = "555"; ObjectID = "gzH-vZ-yxg"; */
+"gzH-vZ-yxg.text" = "555";
+
+/* Class = "IBUILabel"; text = "999.999"; ObjectID = "i2J-sR-5yt"; */
+"i2J-sR-5yt.text" = "999.999";
+
+/* Class = "IBUILabel"; text = "000/000"; ObjectID = "nxb-XZ-WZt"; */
+"nxb-XZ-WZt.text" = "000/000";
+
+/* Class = "IBUILabel"; text = "Benjamin Bume"; ObjectID = "uGA-dd-AKq"; */
+"uGA-dd-AKq.text" = "Benjamin Bume";
+
+/* Class = "IBUILabel"; text = "Punkte Letzter"; ObjectID = "ugo-w8-opb"; */
+"ugo-w8-opb.text" = "Punkte Letzter";
+
+/* Class = "IBUILabel"; text = "Teilnehmer"; ObjectID = "veu-dE-3xl"; */
+"veu-dE-3xl.text" = "Teilnehmer";
