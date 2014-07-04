@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
 
-    DLog(@"Loading RegattaViewControler for A");
+    DLog(@"Loading RegattaViewController for A");
 
     self.regattaNameTextField.delegate = self;
     self.regattaNameTextField.keyboardType = UIKeyboardTypeASCIICapable;
@@ -62,19 +62,6 @@
 
     self.selectorButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:
                                            UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 16.0f : 36.0f];
-    self.selectorButton.titleLabel.textColor = [UIColor whiteColor];
-    [self.selectorButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.selectorButton setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];
-
-
-
-
-    [self.selectorButton setBackgroundImage:[UIImage imageNamed:@"button_background_normal"]
-                                   forState:UIControlStateNormal];
-    [self.selectorButton setBackgroundImage:[UIImage imageNamed:@"button_background_highlighted"]
-                                   forState:UIControlStateHighlighted];
-    [self.selectorButton setBackgroundImage:[UIImage imageNamed:@"button_background_disabled"]
-                                   forState:UIControlStateDisabled];
 
     [self.selectorButton.layer setCornerRadius:self.selectorButton.frame.size.height / 2];
     [self.selectorButton.layer setBorderWidth:0.0];

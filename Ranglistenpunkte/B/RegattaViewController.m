@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
 
-    DLog(@"Loading RegattaViewControler for B");
+    DLog(@"Loading RegattaViewController for B");
 
     self.regattaNameTextField.delegate = self;
     self.regattaNameTextField.keyboardType = UIKeyboardTypeASCIICapable;

@@ -5,3 +5,13 @@
   Created by Martin Kautz on 04.07.14.
   Copyright (c) 2014 Martin Kautz. All rights reserved.
 */
+
+"Your regattas" = "Deine Regatten";
+"No regattas" = "Noch keine Regatten!";
+"Edit" = "Bearbeiten";
+"AckButtonTitle" = "Danksagungen";
+"Score list DODV" = "Rangliste DODV";
+"Score list opti-mv.de" = "Rangliste opti-mv.de";
+"ScoreListDescTextA" = "\n\nDaten werden einmal täglich von dodv.org geladen.";
+"ScoreListDescTextB" = "\n\nDaten werden einmal täglich von opti-mv.de geladen.";
+"About" = "Über Punkte";

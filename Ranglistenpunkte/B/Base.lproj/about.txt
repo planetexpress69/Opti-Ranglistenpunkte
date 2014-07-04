@@ -1,6 +1,6 @@
-Punkte B ist ein kleiner Rechner, der Regatta-Platzierungen für Opti-B nach der Ranglistenformel auf opti-mv.de bewertet.
+Punkte B is a small calculator to score regattas according the rules of opti-mv.de.
 http://opti-mv.de/index.php?id=355
 
-Hinweise oder Anregungen?
+Comments or hints?
 www.jakota.de
 info@jakota.de

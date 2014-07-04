@@ -74,16 +74,6 @@
 
     self.ackButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:
                                            UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 16.0f : 36.0f];
-    self.ackButton.titleLabel.textColor = [UIColor whiteColor];
-    [self.ackButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.ackButton setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];
-
-    [self.ackButton setBackgroundImage:[UIImage imageNamed:@"button_background_normal"]
-                                   forState:UIControlStateNormal];
-    [self.ackButton setBackgroundImage:[UIImage imageNamed:@"button_background_highlighted"]
-                                   forState:UIControlStateHighlighted];
-    [self.ackButton setBackgroundImage:[UIImage imageNamed:@"button_background_disabled"]
-                                   forState:UIControlStateDisabled];
 
     [self.ackButton.layer setCornerRadius:self.ackButton.frame.size.height / 2];
     [self.ackButton.layer setBorderWidth:0.0];

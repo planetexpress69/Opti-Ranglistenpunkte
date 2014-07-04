@@ -33,8 +33,12 @@
     [[UISearchBar appearance] setBarTintColor:THECOLOR];
 
     // Do any additional setup after loading the view.
-    self.title = NSLocalizedString(@"Score list", @"Score list");
 
+#ifdef A
+    self.title = NSLocalizedString(@"Score list DODV", @"Score list DODV");
+#else
+    self.title = NSLocalizedString(@"Score list opti-mv.de", @"Score list opti-mv.de");
+#endif
     self.lovelyNetworkEngine                    = [[LovelyNetworkEngine alloc]initWithHostName:@"www.kimonolabs.com"];
 
     self.theTableView.delegate                  = self;
@@ -217,8 +221,15 @@
     textView.textColor = [UIColor grayColor];
     textView.backgroundColor = [UIColor clearColor];
     textView.textAlignment = NSTextAlignmentCenter;
+
+#ifdef A
+    NSString *scoreListDescKey = @"ScoreListDescTextA";
+#else
+    NSString *scoreListDescKey = @"ScoreListDescTextB";
+#endif
+
     textView.text = self.theDatasource && self.theDatasource.count > 0 ?
-    NSLocalizedString(@"ScoreListDescText", @"ScoreListDescText") :
+    NSLocalizedString(scoreListDescKey, scoreListDescKey) :
     NSLocalizedString(self.errorMessageKey, self.errorMessageKey);
     return textView;
 }
