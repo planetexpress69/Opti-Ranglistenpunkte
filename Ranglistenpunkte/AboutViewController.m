@@ -78,8 +78,6 @@
     [self.ackButton.layer setCornerRadius:self.ackButton.frame.size.height / 2];
     [self.ackButton.layer setBorderWidth:0.0];
     self.ackButton.clipsToBounds = YES;
-
-
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -89,6 +87,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//----------------------------------------------------------------------------------------------------------------------
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

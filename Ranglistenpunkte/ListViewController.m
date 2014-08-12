@@ -59,6 +59,7 @@
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -86,7 +87,6 @@
              // get rid of the table header in B
              [theRawArray removeObjectAtIndex:0];
 #endif
-
              if (theRawArray && theRawArray.count > 0) {
 
                  self.theDatasource = [theRawArray sortedArrayUsingComparator:^NSComparisonResult(id obj1,
@@ -234,7 +234,9 @@
     return textView;
 }
 
+//----------------------------------------------------------------------------------------------------------------------
 #pragma mark - UISearchDisplayController delegate methods
+//----------------------------------------------------------------------------------------------------------------------
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     [self filterContentForSearchText:searchString
@@ -244,15 +246,13 @@
     return YES;
 }
 
+//----------------------------------------------------------------------------------------------------------------------
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     NSPredicate *resultPredicate = [NSPredicate
                                     predicateWithFormat:@"(name contains[cd] %@) OR (firstName contains[cd] %@) OR (year contains[cd] %@)",
                                     searchText, searchText, searchText, searchText];
-
     self.theFilteredDatasource = [self.theDatasource filteredArrayUsingPredicate:resultPredicate];
 }
-
-
 
 @end

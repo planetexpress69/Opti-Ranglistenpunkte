@@ -10,9 +10,4 @@
 
 
 @implementation RegattaCell
-
-- (void)awakeFromNib
-{
-    DLog(@"Woke up!");
-}
 @end

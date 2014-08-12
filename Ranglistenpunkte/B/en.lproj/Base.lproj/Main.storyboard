@@ -397,6 +397,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benjamin Bume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGA-dd-AKq">
                                                     <rect key="frame" x="72" y="8" width="140" height="15"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="PTb-8w-Jcz"/>
                                                         <constraint firstAttribute="width" constant="140" id="Q6S-Uv-eoj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
@@ -407,38 +408,52 @@
                                                     <rect key="frame" x="20" y="6" width="44" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="d49-CB-DB2"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="gFk-LQ-AdU"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="26"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="999,99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmL-e7-gxl">
                                                     <rect key="frame" x="220" y="6" width="80" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="ZtL-co-y0d"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="26"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GER 99999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbe-91-flj">
                                                     <rect key="frame" x="72" y="20" width="56" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="56" id="ecv-vk-4Ym"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2222" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gg-N2-ARS">
                                                     <rect key="frame" x="172" y="20" width="25" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="dLQ-Zt-skL"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="RmL-e7-gxl" firstAttribute="leading" secondItem="6gg-N2-ARS" secondAttribute="trailing" constant="23" id="6HZ-4D-FYk"/>
-                                                <constraint firstItem="gzH-vZ-yxg" firstAttribute="leading" secondItem="s8c-Qh-aSv" secondAttribute="leading" constant="20" symbolic="YES" id="9h0-Xq-H7n"/>
-                                                <constraint firstItem="uGA-dd-AKq" firstAttribute="leading" secondItem="gzH-vZ-yxg" secondAttribute="trailing" constant="8" symbolic="YES" id="Nrv-MV-b2M"/>
-                                                <constraint firstItem="gbe-91-flj" firstAttribute="baseline" secondItem="gzH-vZ-yxg" secondAttribute="baseline" id="SAw-Hk-its"/>
-                                                <constraint firstItem="gbe-91-flj" firstAttribute="leading" secondItem="gzH-vZ-yxg" secondAttribute="trailing" constant="8" symbolic="YES" id="Wyx-Wd-vEe"/>
-                                                <constraint firstAttribute="trailing" secondItem="RmL-e7-gxl" secondAttribute="trailing" constant="20" symbolic="YES" id="cNg-zN-4eX"/>
-                                                <constraint firstAttribute="bottom" secondItem="uGA-dd-AKq" secondAttribute="bottom" constant="20" symbolic="YES" id="h8O-jf-wdD"/>
-                                                <constraint firstItem="RmL-e7-gxl" firstAttribute="centerY" secondItem="s8c-Qh-aSv" secondAttribute="centerY" id="hVo-Gs-Um0"/>
-                                                <constraint firstItem="6gg-N2-ARS" firstAttribute="baseline" secondItem="RmL-e7-gxl" secondAttribute="baseline" id="prE-QY-5od"/>
-                                                <constraint firstItem="6gg-N2-ARS" firstAttribute="baseline" secondItem="gbe-91-flj" secondAttribute="baseline" id="xef-QJ-3I2"/>
-                                                <constraint firstItem="uGA-dd-AKq" firstAttribute="top" secondItem="s8c-Qh-aSv" secondAttribute="top" constant="8" id="zgr-Xj-p5k"/>
+                                                <constraint firstAttribute="bottom" secondItem="6gg-N2-ARS" secondAttribute="bottom" constant="10" id="34i-yL-FbT"/>
+                                                <constraint firstAttribute="bottom" secondItem="RmL-e7-gxl" secondAttribute="bottom" constant="6" id="D3X-eG-VMj"/>
+                                                <constraint firstAttribute="bottom" secondItem="uGA-dd-AKq" secondAttribute="bottom" constant="20" id="D9Y-rN-Ygh"/>
+                                                <constraint firstAttribute="trailing" secondItem="RmL-e7-gxl" secondAttribute="trailing" constant="20" id="Dxo-oh-ZUG"/>
+                                                <constraint firstItem="uGA-dd-AKq" firstAttribute="top" secondItem="s8c-Qh-aSv" secondAttribute="top" constant="8" id="ERu-CF-SQL"/>
+                                                <constraint firstItem="gbe-91-flj" firstAttribute="top" secondItem="s8c-Qh-aSv" secondAttribute="top" constant="20" id="HmQ-Gv-igs"/>
+                                                <constraint firstItem="RmL-e7-gxl" firstAttribute="top" secondItem="s8c-Qh-aSv" secondAttribute="top" constant="6" id="JaQ-Ff-vpL"/>
+                                                <constraint firstAttribute="bottom" secondItem="gzH-vZ-yxg" secondAttribute="bottom" constant="6" id="Rbk-AP-Z8H"/>
+                                                <constraint firstItem="uGA-dd-AKq" firstAttribute="leading" secondItem="gzH-vZ-yxg" secondAttribute="trailing" constant="8" id="ZkR-mr-2Mg"/>
+                                                <constraint firstItem="gzH-vZ-yxg" firstAttribute="top" secondItem="s8c-Qh-aSv" secondAttribute="top" constant="6" id="etX-r7-bNL"/>
+                                                <constraint firstAttribute="bottom" secondItem="gbe-91-flj" secondAttribute="bottom" constant="10" id="f04-TM-AFf"/>
+                                                <constraint firstItem="6gg-N2-ARS" firstAttribute="top" secondItem="s8c-Qh-aSv" secondAttribute="top" constant="20" id="gph-9c-hzN"/>
+                                                <constraint firstItem="gbe-91-flj" firstAttribute="leading" secondItem="gzH-vZ-yxg" secondAttribute="trailing" constant="8" id="kJ7-ef-Su9"/>
+                                                <constraint firstItem="gzH-vZ-yxg" firstAttribute="leading" secondItem="s8c-Qh-aSv" secondAttribute="leading" constant="20" id="oc8-I1-r1L"/>
+                                                <constraint firstItem="RmL-e7-gxl" firstAttribute="leading" secondItem="6gg-N2-ARS" secondAttribute="trailing" constant="23" id="xKv-lg-zUF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
