@@ -624,7 +624,7 @@
 					"A=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/A/Ranglistenpunkte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Punkte A Dev";
 				PROVISIONING_PROFILE = "";
 				SYMROOT = buildA;
@@ -649,7 +649,7 @@
 					"A=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/A/Ranglistenpunkte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Punkte A";
 				PROVISIONING_PROFILE = "37B783A2-FBA3-4F54-9201-9E22222EB45C";
 				SYMROOT = buildA;
@@ -740,7 +740,7 @@
 				GCC_PREFIX_HEADER = "Ranglistenpunkte/B/Ranglistenpunkte-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/B/Ranglistenpunkte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Punkte B Dev";
 				PROVISIONING_PROFILE = "";
 				SYMROOT = buildB;
@@ -764,7 +764,7 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/B/Ranglistenpunkte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Punkte B";
 				PROVISIONING_PROFILE = "454C8010-F909-4A54-8C14-A019C99B8F9A";
 				SYMROOT = buildB;

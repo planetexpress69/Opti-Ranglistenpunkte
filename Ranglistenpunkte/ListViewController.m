@@ -30,7 +30,13 @@
 {
     [super viewDidLoad];
 
-    [[UISearchBar appearance] setBarTintColor:THECOLOR];
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        [[UISearchBar appearance] setTintColor:THECOLOR];
+        self.searchDisplayController.searchBar.tintColor = THECOLOR;
+    } else {
+        [[UISearchBar appearance] setBarTintColor:THECOLOR];
+        self.searchDisplayController.searchBar.barTintColor = THECOLOR;
+    }
 
     // Do any additional setup after loading the view.
 
@@ -52,7 +58,6 @@
     self.theTableView.backgroundView            = nil; // hack the ios6 table background
     self.theTableView.backgroundColor           = LIGHTBACK;
 
-    self.searchDisplayController.searchBar.barTintColor = THECOLOR;
     self.searchDisplayController.searchBar.backgroundColor = THECOLOR;
 
     self.searchDisplayController.searchBar.translucent = NO;

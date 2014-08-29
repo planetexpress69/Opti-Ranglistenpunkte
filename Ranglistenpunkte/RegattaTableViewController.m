@@ -54,9 +54,12 @@
     listItem.tintColor = THEWHITE;
 
     UIBarButtonItem *infoItem = [[UIBarButtonItem alloc]initWithCustomView:infoButton];
+#ifdef A
     self.toolbarItems = @[customBarButtonItem, flex, listItem, flex, infoItem];
+#else
+    self.toolbarItems = @[customBarButtonItem, flex, infoItem];
+#endif
     self.title = NSLocalizedString(@"Your regattas", @"Your regattas");
-
     /*[self.tableView registerClass:[RegattaCell class]
            forCellReuseIdentifier:@"RegattaCell"]; */
 
