@@ -614,8 +614,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Martin Kautz (5CL7HE474F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Kautz (5CL7HE474F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ranglistenpunkte/A/Ranglistenpunkte-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -626,7 +626,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/A/Ranglistenpunkte-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Punkte A Dev";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "aa6453dc-3634-4685-b74e-8f6faae0e4a6";
 				SYMROOT = buildA;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -639,8 +639,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ranglistenpunkte/A/Ranglistenpunkte-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -651,7 +651,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/A/Ranglistenpunkte-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Punkte A";
-				PROVISIONING_PROFILE = "37B783A2-FBA3-4F54-9201-9E22222EB45C";
+				PROVISIONING_PROFILE = "644cd965-4243-400d-85ac-8414d741f98b";
 				SYMROOT = buildA;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -734,15 +734,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Martin Kautz (5CL7HE474F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Kautz (5CL7HE474F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ranglistenpunkte/B/Ranglistenpunkte-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/B/Ranglistenpunkte-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Punkte B Dev";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "57298B2C-27D0-4C46-BD3F-64A65A32E23E";
 				SYMROOT = buildB;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -755,8 +755,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ranglistenpunkte/B/Ranglistenpunkte-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -766,7 +766,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/B/Ranglistenpunkte-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Punkte B";
-				PROVISIONING_PROFILE = "454C8010-F909-4A54-8C14-A019C99B8F9A";
+				PROVISIONING_PROFILE = "633d3bde-7bc6-4a02-9dee-8cc6fe99ab20";
 				SYMROOT = buildB;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

@@ -1,5 +1,5 @@
-Punkte A ist ein kleiner Rechner, der Regatta-Platzierungen für Opti-B nach der Ranglistenformel auf opti-mv.de bewertet.
-http://opti-mv.de/index.php?id=355
+Punkte A ist ein kleiner Rechner, der Regatta-Platzierungen für Opti-A nach der Ranglistenformel auf www.dodv.org bewertet.
+http://www.dodv.org/sport/ranglisten/ranglistenformel/
 
 Hinweise oder Anregungen?
 www.jakota.de
