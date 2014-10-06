@@ -12,7 +12,7 @@
 @interface AboutViewController () <UITextViewDelegate>
 //----------------------------------------------------------------------------------------------------------------------
 @property (nonatomic, weak) IBOutlet UITextView *theTextView;
-@property (nonatomic, weak) IBOutlet UIButton *ackButton;
+@property (nonatomic, weak) IBOutlet UIButton   *ackButton;
 //----------------------------------------------------------------------------------------------------------------------
 @end
 
@@ -44,11 +44,13 @@
     self.theTextView.delegate = self;
 
 
-    if ([self.theTextView respondsToSelector:@selector(setTintColor:)])
+    if ([self.theTextView respondsToSelector:@selector(setTintColor:)]) {
         self.theTextView.tintColor = THECOLOR;
+    }
 
-    if ([self.ackButton respondsToSelector:@selector(setTintColor:)])
+    if ([self.ackButton respondsToSelector:@selector(setTintColor:)]) {
         self.ackButton.tintColor = THECOLOR;
+    }
 
 
 

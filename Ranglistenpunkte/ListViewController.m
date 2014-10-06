@@ -45,7 +45,7 @@
 #else
     self.title = NSLocalizedString(@"Score list opti-mv.de", @"Score list opti-mv.de");
 #endif
-    self.lovelyNetworkEngine                    = [[LovelyNetworkEngine alloc]initWithHostName:@"www.kimonolabs.com"];
+    self.lovelyNetworkEngine                    = [[LovelyNetworkEngine alloc]initWithHostName:@"www.teambender.de"];
 
     self.theTableView.delegate                  = self;
     self.theTableView.dataSource                = self;
@@ -75,29 +75,23 @@
 {
     [self.theSpinner startAnimating];
 
-    // please use your own api key!!!
-    [self.lovelyNetworkEngine fetchPayloadForApiKey:@"04ac821fe0f3bd9c2905f196ab7ddb15"
+    [self.lovelyNetworkEngine fetchPayloadForPath:@"scrape.php"
                                        onCompletion:^(MKNetworkOperation *completedOperation)
      {
          NSError *parsingError = nil;
-         NSDictionary *payload =
+         NSArray *payload =
          [NSJSONSerialization JSONObjectWithData:completedOperation.responseData
                                          options:NSJSONReadingAllowFragments
                                            error:&parsingError];
 
          if (payload && !parsingError) {
-             NSMutableArray *theRawArray = ((NSArray *)payload[@"results"][@"collection1"]).mutableCopy;
 
-#ifndef A
-             // get rid of the table header in B
-             [theRawArray removeObjectAtIndex:0];
-#endif
-             if (theRawArray && theRawArray.count > 0) {
+             if (payload.count > 0) {
 
-                 self.theDatasource = [theRawArray sortedArrayUsingComparator:^NSComparisonResult(id obj1,
-                                                                                                  id obj2) {
-                     float fFirst = ((NSNumber *)(NSDictionary *)obj1[@"position"]).floatValue;
-                     float fSecnd = ((NSNumber *)(NSDictionary *)obj2[@"position"]).floatValue;
+                 self.theDatasource = [payload sortedArrayUsingComparator:^NSComparisonResult(id obj1,
+                                                                                              id obj2) {
+                     int fFirst = ((NSNumber *)(NSDictionary *)obj1[@"pos"]).intValue;
+                     int fSecnd = ((NSNumber *)(NSDictionary *)obj2[@"pos"]).intValue;
                      if (fFirst > fSecnd)
                          return NSOrderedDescending;
                      else if (fFirst < fSecnd)
@@ -152,21 +146,21 @@
 #ifdef A
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         NSDictionary *elem = self.theFilteredDatasource[indexPath.row];
-        cell.posLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
-        cell.nameLabel.text = elem[@"name"];
-        cell.sailLabel.text = elem[@"sail"];
+        cell.posLabel.text = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"pos"]).intValue];
+        cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"firstname"], elem[@"name"]];
+        cell.sailLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"sailCountry"], elem[@"sailNumber"]];
 
-        cell.scoreLabel.text = [NSString stringWithFormat:@"%@", ((NSString *)elem[@"score"])];
-        cell.yearLabel.text = elem[@"year"];
+        cell.scoreLabel.text = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
+        cell.yearLabel.text = elem[@"yob"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
         NSDictionary *elem = self.theDatasource[indexPath.row];
-        cell.posLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
-        cell.nameLabel.text = elem[@"name"];
-        cell.sailLabel.text = elem[@"sail"];
+        cell.posLabel.text = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"pos"]).intValue];
+        cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"firstname"], elem[@"name"]];
+        cell.sailLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"sailCountry"], elem[@"sailNumber"]];
 
-        cell.scoreLabel.text = [NSString stringWithFormat:@"%@", ((NSString *)elem[@"score"])];
-        cell.yearLabel.text = elem[@"year"];
+        cell.scoreLabel.text = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
+        cell.yearLabel.text = elem[@"yob"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
@@ -175,7 +169,7 @@
         NSDictionary *elem = self.theFilteredDatasource[indexPath.row];
         cell.posLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
         cell.nameLabel.text = elem[@"name"];
-        cell.sailLabel.text = elem[@"firstName"];
+        cell.sailLabel.text = elem[@"firstname"];
 
         cell.scoreLabel.text = [NSString stringWithFormat:@"%@", ((NSString *)elem[@"score"])];
         cell.yearLabel.text = elem[@"year"];
@@ -184,7 +178,7 @@
         NSDictionary *elem = self.theDatasource[indexPath.row];
         cell.posLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
         cell.nameLabel.text = elem[@"name"];
-        cell.sailLabel.text = elem[@"firstName"];
+        cell.sailLabel.text = elem[@"firstname"];
 
         cell.scoreLabel.text = [NSString stringWithFormat:@"%@", ((NSString *)elem[@"score"])];
         cell.yearLabel.text = elem[@"year"];
@@ -255,7 +249,7 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     NSPredicate *resultPredicate = [NSPredicate
-                                    predicateWithFormat:@"(name contains[cd] %@) OR (firstName contains[cd] %@) OR (year contains[cd] %@)",
+                                    predicateWithFormat:@"(name contains[cd] %@) OR (firstname contains[cd] %@) OR (yob contains[cd] %@)",
                                     searchText, searchText, searchText, searchText];
     self.theFilteredDatasource = [self.theDatasource filteredArrayUsingPredicate:resultPredicate];
 }

@@ -13,18 +13,14 @@
 //----------------------------------------------------------------------------------------------------------------------
 #pragma mark - fetch data
 //----------------------------------------------------------------------------------------------------------------------
-- (void)fetchPayloadForApiKey:(NSString *)sApiKey
-                 onCompletion:(MKNKResponseBlock)completionBlock
-                      onError:(MKNKErrorBlock)errorBlock
+- (void)fetchPayloadForPath:(NSString *)path
+               onCompletion:(MKNKResponseBlock)completionBlock
+                    onError:(MKNKErrorBlock)errorBlock
 {
-
-    NSDictionary *params = @{ @"apikey" : sApiKey };
-    
-    // please use your own api path!!!
-    MKNetworkOperation *op = [self operationWithPath:THEAPIPATH
-                                              params:params
+    MKNetworkOperation *op = [self operationWithPath:path
+                                              params:nil
                                           httpMethod:@"GET"
-                                                 ssl:YES];
+                                                 ssl:NO];
 
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         completionBlock(completedOperation);
@@ -33,6 +29,7 @@
     }];
 
     [self enqueueOperation:op];
+
 }
 
 @end

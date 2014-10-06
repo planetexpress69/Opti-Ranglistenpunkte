@@ -11,8 +11,8 @@
 
 @interface LovelyNetworkEngine : MKNetworkEngine
 //----------------------------------------------------------------------------------------------------------------------
-- (void)fetchPayloadForApiKey:(NSString *)sApiKey
-                 onCompletion:(MKNKResponseBlock)completionBlock
+- (void)fetchPayloadForPath:(NSString *)path
+               onCompletion:(MKNKResponseBlock)completionBlock
                       onError:(MKNKErrorBlock)errorBlock;
 //----------------------------------------------------------------------------------------------------------------------
 @end
