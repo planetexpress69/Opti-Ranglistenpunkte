@@ -79,6 +79,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.tableView reloadData];
     [self update];
     self.navigationController.toolbarHidden = NO;

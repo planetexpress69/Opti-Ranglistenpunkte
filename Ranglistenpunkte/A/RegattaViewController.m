@@ -79,6 +79,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     if (self.editing) {
         self.regattaNameTextField.userInteractionEnabled = YES;
         self.regattaNameTextField.borderStyle = UITextBorderStyleRoundedRect;

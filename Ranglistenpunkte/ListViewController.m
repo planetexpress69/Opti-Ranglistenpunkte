@@ -73,6 +73,8 @@
 //----------------------------------------------------------------------------------------------------------------------
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     [self.theSpinner startAnimating];
 
     [self.lovelyNetworkEngine fetchPayloadForPath:@"scrape.php"
