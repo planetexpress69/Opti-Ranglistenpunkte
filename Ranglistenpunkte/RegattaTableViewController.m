@@ -10,6 +10,7 @@
 #import "RegattaViewController.h"
 #import "SimpleDataProvider.h"
 #import "RegattaCell.h"
+#import <FontAwesome+iOS/NSString+FontAwesome.h>
 
 
 @interface RegattaTableViewController ()
@@ -35,29 +36,34 @@
     customLabelView.text = @"000.000";
     [containerView addSubview:customLabelView];
 
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    infoButton.tintColor = [UIColor whiteColor];
-    [infoButton addTarget:self action:@selector(info:) forControlEvents:UIControlEventTouchUpInside];
-
     UIBarButtonItem *customBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:containerView];
     UIBarButtonItem *flex = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                          target:self action:nil];
 
-    UIImage *listImage = [UIImage imageNamed:@"list"];
+    UIBarButtonItem *fix = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                                         target:self action:nil];
 
-    if ([UIImage instancesRespondToSelector:@selector(imageWithRenderingMode:)]) {
-        listImage = [[UIImage imageNamed:@"list"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    }
+    NSDictionary *txtAttr = @{ UITextAttributeFont : [UIFont fontWithName: kFontAwesomeFamilyName size: 22],
+                                        UITextAttributeTextColor : [UIColor whiteColor],
+                                        UITextAttributeTextShadowColor: [UIColor blackColor],
+                                        UITextAttributeTextShadowOffset: [NSValue valueWithCGSize:  CGSizeMake(0,-1)] };
 
-    UIBarButtonItem *listItem = [[UIBarButtonItem alloc]initWithImage:listImage style:UIBarButtonItemStylePlain
+    UIBarButtonItem *listItem = [[UIBarButtonItem alloc]initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-list"]
+                                                                style:UIBarButtonItemStylePlain
                                                                target:self action:@selector(callList:)];
+    [listItem setTitleTextAttributes:txtAttr forState:UIControlStateNormal];
     listItem.tintColor = THEWHITE;
 
-    UIBarButtonItem *infoItem = [[UIBarButtonItem alloc]initWithCustomView:infoButton];
+    UIBarButtonItem *infoItem = [[UIBarButtonItem alloc]initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-info-sign"]
+                                                                style:UIBarButtonItemStylePlain
+                                                               target:self action:@selector(info:)];
+    [infoItem setTitleTextAttributes:txtAttr forState:UIControlStateNormal];
+    infoItem.tintColor = THEWHITE;
+    
 #ifdef A
-    self.toolbarItems = @[customBarButtonItem, flex, listItem, flex, infoItem];
+    self.toolbarItems = @[customBarButtonItem, flex, listItem, flex, infoItem, fix];
 #else
-    self.toolbarItems = @[customBarButtonItem, flex, infoItem];
+    self.toolbarItems = @[customBarButtonItem, flex, infoItem, fix];
 #endif
     self.title = NSLocalizedString(@"Your regattas", @"Your regattas");
     /*[self.tableView registerClass:[RegattaCell class]

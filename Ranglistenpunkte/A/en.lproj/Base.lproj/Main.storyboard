@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qpp-nT-HVv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qpp-nT-HVv">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Regatta Table View Controller - Root View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="kv1-xl-ajT">
             <objects>
                 <tableViewController id="eZw-9y-L3R" customClass="RegattaTableViewController" sceneMemberID="viewController">
@@ -98,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="404" y="-430"/>
         </scene>
-        <!--Regatta View Controller - DetailView-->
+        <!--DetailView-->
         <scene sceneID="Vu6-wt-yG0">
             <objects>
                 <viewController id="OX7-Se-6xW" customClass="RegattaViewController" sceneMemberID="viewController">
@@ -270,6 +271,16 @@
                                     <segue destination="eX0-CT-w0w" kind="push" id="csv-d3-zDN"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5 (1234)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDP-gQ-4hy">
+                                <rect key="frame" x="256" y="82" width="64" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="ge3-lr-kA5"/>
+                                    <constraint firstAttribute="width" constant="64" id="vd4-rj-hkZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -281,12 +292,14 @@
                             <constraint firstItem="7cr-IZ-FVP" firstAttribute="leading" secondItem="8Oh-3J-CHJ" secondAttribute="leading" constant="20" symbolic="YES" id="c9e-Yy-P5A"/>
                             <constraint firstItem="8vM-0u-tmV" firstAttribute="top" secondItem="7cr-IZ-FVP" secondAttribute="bottom" constant="21" id="gJH-J6-REX"/>
                             <constraint firstAttribute="trailing" secondItem="8vM-0u-tmV" secondAttribute="trailing" id="hPk-uw-dUA"/>
+                            <constraint firstItem="aDP-gQ-4hy" firstAttribute="trailing" secondItem="8Oh-3J-CHJ" secondAttribute="trailing" id="jJS-UR-tRw"/>
                             <constraint firstItem="8vM-0u-tmV" firstAttribute="centerX" secondItem="7cr-IZ-FVP" secondAttribute="centerX" id="kmp-qH-RTY"/>
                             <constraint firstItem="4Us-4J-z8E" firstAttribute="leading" secondItem="8Oh-3J-CHJ" secondAttribute="leading" constant="20" id="ku9-qa-n4e"/>
                             <constraint firstItem="7cr-IZ-FVP" firstAttribute="top" secondItem="hUR-Wa-gxf" secondAttribute="bottom" constant="3" id="m1P-YR-4pV"/>
                             <constraint firstItem="8vM-0u-tmV" firstAttribute="leading" secondItem="8Oh-3J-CHJ" secondAttribute="leading" id="mdw-zw-X6L"/>
                             <constraint firstAttribute="trailing" secondItem="4Us-4J-z8E" secondAttribute="trailing" constant="20" id="o40-w2-eTn"/>
                             <constraint firstAttribute="bottom" secondItem="8vM-0u-tmV" secondAttribute="bottom" id="sAZ-cJ-vsK"/>
+                            <constraint firstItem="aDP-gQ-4hy" firstAttribute="top" secondItem="3bH-bs-kIi" secondAttribute="bottom" constant="18" id="uqg-Iz-sAh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="54I-sI-sZE">
@@ -299,11 +312,12 @@
                     <connections>
                         <outlet property="ackButton" destination="4Us-4J-z8E" id="DqF-LL-x1r"/>
                         <outlet property="theTextView" destination="7cr-IZ-FVP" id="1GO-UY-87S"/>
+                        <outlet property="versionLabel" destination="aDP-gQ-4hy" id="E3L-s4-o42"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NuU-ra-Swn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="233"/>
+            <point key="canvasLocation" x="356" y="233"/>
         </scene>
         <!--Ack View Controller-->
         <scene sceneID="PZd-iY-Ko7">

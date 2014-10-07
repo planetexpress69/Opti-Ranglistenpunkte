@@ -13,6 +13,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 @property (nonatomic, weak) IBOutlet UITextView *theTextView;
 @property (nonatomic, weak) IBOutlet UIButton   *ackButton;
+@property (nonatomic, weak) IBOutlet UILabel    *versionLabel;
 //----------------------------------------------------------------------------------------------------------------------
 @end
 
@@ -80,6 +81,11 @@
     [self.ackButton.layer setCornerRadius:self.ackButton.frame.size.height / 2];
     [self.ackButton.layer setBorderWidth:0.0];
     self.ackButton.clipsToBounds = YES;
+
+    // load version
+    self.versionLabel.text = [NSString stringWithFormat:@"%@ (%@)",
+                              [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"],
+                              [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="YMt-Uk-BVR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="YMt-Uk-BVR">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Regatta Table View Controller - Root View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="zOI-Gw-3qw">
             <objects>
                 <tableViewController id="ANe-C9-zhW" customClass="RegattaTableViewController" sceneMemberID="viewController">
@@ -100,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="404" y="-430"/>
         </scene>
-        <!--Regatta View Controller - DetailView-->
+        <!--DetailView-->
         <scene sceneID="Q5G-DT-jcl">
             <objects>
                 <viewController id="dJ4-qn-03D" customClass="RegattaViewController" sceneMemberID="viewController">
@@ -278,6 +280,16 @@
                                     <segue destination="hGY-RT-gSW" kind="push" id="3a0-45-a31"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5 (1234)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ona-JL-mET">
+                                <rect key="frame" x="236" y="82" width="64" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Idz-kg-OPO"/>
+                                    <constraint firstAttribute="height" constant="14" id="SCt-tQ-gxe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -294,6 +306,8 @@
                             <constraint firstItem="siC-9b-zTw" firstAttribute="top" secondItem="g3p-V2-95M" secondAttribute="bottom" constant="10" id="euC-rv-NiP"/>
                             <constraint firstItem="bRj-tA-Sr4" firstAttribute="leading" secondItem="Rbn-PR-d3X" secondAttribute="leading" constant="20" id="euk-nF-vQU"/>
                             <constraint firstItem="GOS-DD-3jK" firstAttribute="top" secondItem="Oed-A1-NM5" secondAttribute="bottom" constant="21" id="kCd-i6-MHR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ona-JL-mET" secondAttribute="trailing" constant="4" id="kyJ-ny-P1v"/>
+                            <constraint firstItem="ona-JL-mET" firstAttribute="top" secondItem="g3p-V2-95M" secondAttribute="bottom" constant="18" id="mcC-HI-T16"/>
                             <constraint firstItem="Oed-A1-NM5" firstAttribute="leading" secondItem="Rbn-PR-d3X" secondAttribute="leading" constant="20" symbolic="YES" id="oS6-bd-OvE"/>
                         </constraints>
                     </view>
@@ -307,6 +321,7 @@
                     <connections>
                         <outlet property="ackButton" destination="bRj-tA-Sr4" id="3tK-xq-Y6x"/>
                         <outlet property="theTextView" destination="Oed-A1-NM5" id="wVM-vE-xid"/>
+                        <outlet property="versionLabel" destination="ona-JL-mET" id="oKz-KB-DVY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sCD-Oz-pQj" userLabel="First Responder" sceneMemberID="firstResponder"/>
