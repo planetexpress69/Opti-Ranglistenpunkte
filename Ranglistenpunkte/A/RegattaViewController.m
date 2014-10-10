@@ -96,15 +96,6 @@
     self.view.backgroundColor = LIGHTBACK;
 }
 
-- (IBAction)toggleEdit:(id)sender
-{
-    if (self.editing) {
-        [self setEditing:NO animated:YES];
-    } else {
-        [self setEditing:YES animated:YES];
-    }
-}
-
 //----------------------------------------------------------------------------------------------------------------------
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -213,6 +204,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - Toggle edit
+//----------------------------------------------------------------------------------------------------------------------
+- (IBAction)toggleEdit:(id)sender
+{
+    if (self.editing) {
+        [self setEditing:NO animated:YES];
+    } else {
+        [self setEditing:YES animated:YES];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------------------------
 #pragma mark - Handle editing

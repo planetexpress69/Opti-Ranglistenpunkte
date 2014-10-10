@@ -9,6 +9,7 @@
 #import "RegattaViewController.h"
 #import "RegattaTableViewController.h"
 #import "SimpleDataProvider.h"
+#import <FontAwesome+iOS/UIImage+FontAwesome.h>
 
 
 @interface RegattaViewController () <UITextFieldDelegate, UIActionSheetDelegate>
@@ -73,14 +74,29 @@
     self.pointsOfLoser.returnKeyType = UIReturnKeyNext;
 
 
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+    UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                          backgroundColor:[UIColor clearColor]
+                                                iconColor:[UIColor whiteColor]
+                                                iconScale:1.0f
+                                                  andSize:CGSizeMake(22.0f, 22.0f)];
 
-    //[self initDatasource];
+    UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                             backgroundColor:[UIColor clearColor]
+                                                   iconColor:[UIColor whiteColor]
+                                                   iconScale:1.0f
+                                                     andSize:CGSizeMake(18.0f, 18.0f)];
+
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                    landscapeImagePhone:landscapeEditIconImage
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(toggleEdit:)];
+    self.navigationItem.rightBarButtonItem = editButton;
 
     self.title = NSLocalizedString(@"Regatta", @"Regatta");
     self.view.backgroundColor = LIGHTBACK;
 }
+
 
 //----------------------------------------------------------------------------------------------------------------------
 - (void)viewWillAppear:(BOOL)animated
@@ -105,7 +121,25 @@
         self.pointsOfLoser.borderStyle = UITextBorderStyleRoundedRect;
         // ----------------------------------------------------------------------------
 
-        self.editButtonItem.title = NSLocalizedString(@"Fertig", @"Fertig");
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-check"
+                                              backgroundColor:[UIColor clearColor]
+                                                    iconColor:[UIColor whiteColor]
+                                                    iconScale:1.0f
+                                                      andSize:CGSizeMake(22.0f, 22.0f)];
+
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-check"
+                                                 backgroundColor:[UIColor clearColor]
+                                                       iconColor:[UIColor whiteColor]
+                                                       iconScale:1.0f
+                                                         andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+
     }
     else {
         self.regattaNameTextField.userInteractionEnabled = NO;
@@ -132,7 +166,26 @@
         self.pointsOfLoser.borderStyle = UITextBorderStyleNone;
         self.pointsOfLoser.text = self.theRegatta[@"pointsOfLoser"];
         // ----------------------------------------------------------------------------
-        self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+        //self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                              backgroundColor:[UIColor clearColor]
+                                                    iconColor:[UIColor whiteColor]
+                                                    iconScale:1.0f
+                                                      andSize:CGSizeMake(22.0f, 22.0f)];
+
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                                 backgroundColor:[UIColor clearColor]
+                                                       iconColor:[UIColor whiteColor]
+                                                       iconScale:1.0f
+                                                         andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+
     }
     self.navigationController.toolbarHidden = YES;
 }
@@ -149,6 +202,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - Toggle edit
+//----------------------------------------------------------------------------------------------------------------------
+- (IBAction)toggleEdit:(id)sender
+{
+    if (self.editing) {
+        [self setEditing:NO animated:YES];
+    } else {
+        [self setEditing:YES animated:YES];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------------------------
 #pragma mark - Handle editing
@@ -177,7 +244,26 @@
         self.pointsOfLoser.userInteractionEnabled = YES;
         self.pointsOfLoser.borderStyle = UITextBorderStyleRoundedRect;
         // ----------------------------------------------------------------------------
-        self.editButtonItem.title = NSLocalizedString(@"Fertig", @"Fertig");
+        //self.editButtonItem.title = NSLocalizedString(@"Fertig", @"Fertig");
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-check"
+                                              backgroundColor:[UIColor clearColor]
+                                                    iconColor:[UIColor whiteColor]
+                                                    iconScale:1.0f
+                                                      andSize:CGSizeMake(22.0f, 22.0f)];
+
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-check"
+                                                 backgroundColor:[UIColor clearColor]
+                                                       iconColor:[UIColor whiteColor]
+                                                       iconScale:1.0f
+                                                         andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+
     }
     else {
         // Save the changes if needed and change the views to noneditable.
@@ -199,7 +285,28 @@
         self.pointsOfLoser.userInteractionEnabled = NO;
         self.pointsOfLoser.borderStyle = UITextBorderStyleNone;
         // ----------------------------------------------------------------------------
-        self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+        //self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                              backgroundColor:[UIColor clearColor]
+                                                    iconColor:[UIColor whiteColor]
+                                                    iconScale:1.0f
+                                                      andSize:CGSizeMake(22.0f, 22.0f)];
+
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                                 backgroundColor:[UIColor clearColor]
+                                                       iconColor:[UIColor whiteColor]
+                                                       iconScale:1.0f
+                                                         andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+
+
+
         // ----------------------------------------------------------------------------
         [self store];
     }
