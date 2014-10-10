@@ -86,6 +86,9 @@
     self.versionLabel.text = [NSString stringWithFormat:@"%@ (%@)",
                               [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"],
                               [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+
+
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -99,7 +102,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    self.title = NSLocalizedString(@"About", @"About");
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@""
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -15,3 +15,4 @@
 "ScoreListDescTextA" = "\n\nData is being fetched daily from dodv.org...";
 "ScoreListDescTextB" = "\n\nData is being fetched daily from opti-mv.de...";
 "About" = "About";
+"AckViewControllerTitle" = "Acknowledgements";

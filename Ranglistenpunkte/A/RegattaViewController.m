@@ -9,6 +9,7 @@
 #import "RegattaViewController.h"
 #import "RegattaTableViewController.h"
 #import "SimpleDataProvider.h"
+#import <FontAwesome+iOS/UIImage+FontAwesome.h>
 
 
 @interface RegattaViewController () <UITextFieldDelegate, UIActionSheetDelegate>
@@ -67,13 +68,41 @@
     [self.selectorButton.layer setBorderWidth:0.0];
     self.selectorButton.clipsToBounds = YES;
 
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+    UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                          backgroundColor:[UIColor clearColor]
+                                                iconColor:[UIColor whiteColor]
+                                                iconScale:1.0f
+                                                  andSize:CGSizeMake(22.0f, 22.0f)];
+
+    UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                             backgroundColor:[UIColor clearColor]
+                                                   iconColor:[UIColor whiteColor]
+                                                   iconScale:1.0f
+                                                     andSize:CGSizeMake(18.0f, 18.0f)];
+
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                    landscapeImagePhone:landscapeEditIconImage
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(toggleEdit:)];
+    self.navigationItem.rightBarButtonItem = editButton;
+
 
     [self initDatasource];
 
     self.title = NSLocalizedString(@"Regatta", @"Regatta");
     self.view.backgroundColor = LIGHTBACK;
+}
+
+- (IBAction)toggleEdit:(id)sender
+{
+    if (self.editing) {
+        [self setEditing:NO animated:YES];
+    } else {
+        [self setEditing:YES animated:YES];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -100,7 +129,27 @@
         if (self.theRegatta == nil) {
             self.dSelectedRegatta = [self firstRegatta];
         }
-        self.editButtonItem.title = NSLocalizedString(@"Fertig", @"Fertig");
+        //self.editButtonItem.title = NSLocalizedString(@"Fertig", @"Fertig");
+
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-check"
+                                              backgroundColor:[UIColor clearColor]
+                                                    iconColor:[UIColor whiteColor]
+                                                    iconScale:1.0f
+                                                      andSize:CGSizeMake(22.0f, 22.0f)];
+
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-check"
+                                                 backgroundColor:[UIColor clearColor]
+                                                       iconColor:[UIColor whiteColor]
+                                                       iconScale:1.0f
+                                                         andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+
     }
     else {
         self.regattaNameTextField.userInteractionEnabled = NO;
@@ -123,7 +172,26 @@
         // ----------------------------------------------------------------------------
         self.selectorButton.enabled = NO;
         self.selectorButton.titleLabel.textColor = [UIColor grayColor];
-        self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+        //self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                              backgroundColor:[UIColor clearColor]
+                                                    iconColor:[UIColor whiteColor]
+                                                    iconScale:1.0f
+                                                      andSize:CGSizeMake(22.0f, 22.0f)];
+
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                                 backgroundColor:[UIColor clearColor]
+                                                       iconColor:[UIColor whiteColor]
+                                                       iconScale:1.0f
+                                                         andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+
     }
     [self.selectorButton setTitle:self.dSelectedRegatta[@"title"] forState:UIControlStateNormal];
     [self.selectorButton setTitle:self.dSelectedRegatta[@"title"] forState:UIControlStateDisabled];
@@ -168,7 +236,25 @@
         self.regattaRacesTextField.borderStyle = UITextBorderStyleRoundedRect;
         // ----------------------------------------------------------------------------
         self.selectorButton.enabled = YES;
-        self.editButtonItem.title = NSLocalizedString(@"Fertig", @"Fertig");
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-check"
+                                              backgroundColor:[UIColor clearColor]
+                                                    iconColor:[UIColor whiteColor]
+                                                    iconScale:1.0f
+                                                      andSize:CGSizeMake(22.0f, 22.0f)];
+
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-check"
+                                                 backgroundColor:[UIColor clearColor]
+                                                       iconColor:[UIColor whiteColor]
+                                                       iconScale:1.0f
+                                                         andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+
     }
     else {
         // Save the changes if needed and change the views to noneditable.
@@ -185,7 +271,26 @@
         self.regattaRacesTextField.borderStyle = UITextBorderStyleNone;
         // ----------------------------------------------------------------------------
         self.selectorButton.enabled = NO;
-        self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+        //self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                              backgroundColor:[UIColor clearColor]
+                                                    iconColor:[UIColor whiteColor]
+                                                    iconScale:1.0f
+                                                      andSize:CGSizeMake(22.0f, 22.0f)];
+
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-edit"
+                                                 backgroundColor:[UIColor clearColor]
+                                                       iconColor:[UIColor whiteColor]
+                                                       iconScale:1.0f
+                                                         andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+
         // ----------------------------------------------------------------------------
         [self store];
     }

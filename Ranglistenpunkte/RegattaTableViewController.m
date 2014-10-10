@@ -11,6 +11,7 @@
 #import "SimpleDataProvider.h"
 #import "RegattaCell.h"
 #import <FontAwesome+iOS/NSString+FontAwesome.h>
+#import <FontAwesome+iOS/UIImage+FontAwesome.h>
 
 
 @interface RegattaTableViewController ()
@@ -24,8 +25,18 @@
 {
     [super viewDidLoad];
 
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+    UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] iconScale:1.0f andSize:CGSizeMake(22.0f, 22.0f)];
+    UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-edit" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] iconScale:1.0f andSize:CGSizeMake(18.0f, 18.0f)];
+
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                    landscapeImagePhone:landscapeEditIconImage
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(toggleEdit:)];
+    self.navigationItem.leftBarButtonItem = editButton;
+
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
 
     UIView *containerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 150, 39)];
     UILabel *customLabelView = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 150, 39)];
@@ -45,8 +56,9 @@
 
     NSDictionary *txtAttr = @{ UITextAttributeFont : [UIFont fontWithName: kFontAwesomeFamilyName size: 22],
                                         UITextAttributeTextColor : [UIColor whiteColor],
-                                        UITextAttributeTextShadowColor: [UIColor blackColor],
-                                        UITextAttributeTextShadowOffset: [NSValue valueWithCGSize:  CGSizeMake(0,-1)] };
+                               //UITextAttributeTextShadowColor: [UIColor blackColor],
+                               //UITextAttributeTextShadowOffset: [NSValue valueWithCGSize:  CGSizeMake(0,-1)]
+                               };
 
     UIBarButtonItem *listItem = [[UIBarButtonItem alloc]initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-list"]
                                                                 style:UIBarButtonItemStylePlain
@@ -74,6 +86,7 @@
 
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.toolbar.translucent = NO;
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -83,6 +96,11 @@
     [self.tableView reloadData];
     [self update];
     self.navigationController.toolbarHidden = NO;
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@""
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -139,7 +157,16 @@
     UILabel *theLabel = (UILabel *)theView.subviews[0];
     theLabel.text = [NSString stringWithFormat:@"%.3f", bestScore];
 
-    self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+    UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] iconScale:1.0f andSize:CGSizeMake(22.0f, 22.0f)];
+    UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-edit" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] iconScale:1.0f andSize:CGSizeMake(18.0f, 18.0f)];
+
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                    landscapeImagePhone:landscapeEditIconImage
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(toggleEdit:)];
+    self.navigationItem.leftBarButtonItem = editButton;
+
     self.navigationItem.leftBarButtonItem.enabled = [SimpleDataProvider sharedInstance].theDataStorageArray.count > 0;
 }
 
@@ -303,10 +330,28 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     [super setEditing:editing animated:animated];
 
     if (editing) {
-        self.editButtonItem.title = NSLocalizedString(@"Done", @"Done");
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-check" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] iconScale:1.0f andSize:CGSizeMake(22.0f, 22.0f)];
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-check" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] iconScale:1.0f andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.leftBarButtonItem = editButton;
+
     }
     else {
-        self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
+        UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] iconScale:1.0f andSize:CGSizeMake(22.0f, 22.0f)];
+        UIImage *landscapeEditIconImage = [UIImage imageWithIcon:@"icon-edit" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] iconScale:1.0f andSize:CGSizeMake(18.0f, 18.0f)];
+
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithImage:normalEditIconImage
+                                                        landscapeImagePhone:landscapeEditIconImage
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(toggleEdit:)];
+        self.navigationItem.leftBarButtonItem = editButton;
+
     }
 }
 
@@ -317,5 +362,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return NO;
 }
+
+- (IBAction)toggleEdit:(id)sender
+{
+    if (self.tableView.isEditing) {
+        [self setEditing:NO animated:YES];
+    } else {
+        [self setEditing:YES animated:YES];
+    }
+}
+
 
 @end
