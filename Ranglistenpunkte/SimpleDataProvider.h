@@ -21,6 +21,6 @@
 - (void)persist;
 - (CGFloat)bestScoreA;
 - (CGFloat)bestScoreB;
-- (int)mFactor:(NSInteger)numberOfRaces;
+- (int)mFactor:(NSInteger)numberOfRaces atLeastThreeDays:(BOOL)threeDays;
 //----------------------------------------------------------------------------------------------------------------------
 @end

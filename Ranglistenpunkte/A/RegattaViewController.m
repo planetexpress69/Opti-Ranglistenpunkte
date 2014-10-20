@@ -19,6 +19,7 @@
 @property (nonatomic, weak)     IBOutlet    UITextField     *regattaFieldTextField;
 @property (nonatomic, weak)     IBOutlet    UITextField     *regattaRacesTextField;
 @property (nonatomic, weak)     IBOutlet    UIButton        *selectorButton;
+@property (nonatomic, weak)     IBOutlet    UIButton        *threeDaysButton;
 //----------------------------------------------------------------------------------------------------------------------
 @property (nonatomic, strong)               NSDictionary    *dSelectedRegatta;
 @property (nonatomic, strong)               NSArray         *aRegattas;
@@ -92,8 +93,26 @@
 
     [self initDatasource];
 
-    self.title = NSLocalizedString(@"Regatta", @"Regatta");
-    self.view.backgroundColor = LIGHTBACK;
+
+    [self.threeDaysButton setTitle:@"\uf096" forState:UIControlStateNormal];
+    [self.threeDaysButton setTitle:@"\uf14a" forState:UIControlStateSelected];
+    self.threeDaysButton.titleLabel.font = [UIFont fontWithName:@"FontAwesome" size:30.0f];
+    [self.threeDaysButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.threeDaysButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+
+/*
+    [self.threeDaysButton setBackgroundImage:notselectedcheckbox
+                                    forState:UIControlStateNormal];
+    [self.threeDaysButton setBackgroundImage:selectedcheckbox
+                                    forState:UIControlStateSelected]; */
+
+    [self.threeDaysButton addTarget:self
+                             action:@selector(toggleThreeDays:)
+                   forControlEvents:UIControlEventTouchUpInside];
+
+
+    self.title                      = NSLocalizedString(@"Regatta", @"Regatta");
+    self.view.backgroundColor       = LIGHTBACK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -101,26 +120,29 @@
 {
     [super viewWillAppear:animated];
     if (self.editing) {
-        self.regattaNameTextField.userInteractionEnabled = YES;
-        self.regattaNameTextField.borderStyle = UITextBorderStyleRoundedRect;
-        // ----------------------------------------------------------------------------
-        self.regattaPosTextField.userInteractionEnabled = YES;
-        self.regattaPosTextField.borderStyle = UITextBorderStyleRoundedRect;
-        // ----------------------------------------------------------------------------
-        self.regattaFieldTextField.userInteractionEnabled = YES;
-        self.regattaFieldTextField.borderStyle = UITextBorderStyleRoundedRect;
-        // ----------------------------------------------------------------------------
-        self.regattaRacesTextField.userInteractionEnabled = YES;
-        self.regattaRacesTextField.borderStyle = UITextBorderStyleRoundedRect;
-        // ----------------------------------------------------------------------------
-        self.selectorButton.enabled = YES;
-        self.selectorButton.titleLabel.textColor = [UIColor whiteColor];
-        // ----------------------------------------------------------------------------
+        self.regattaNameTextField.userInteractionEnabled    = YES;
+        self.regattaNameTextField.borderStyle               = UITextBorderStyleRoundedRect;
+        // -------------------------------------------------------------------------------------------
+        self.regattaPosTextField.userInteractionEnabled     = YES;
+        self.regattaPosTextField.borderStyle                = UITextBorderStyleRoundedRect;
+        // -------------------------------------------------------------------------------------------
+        self.regattaFieldTextField.userInteractionEnabled   = YES;
+        self.regattaFieldTextField.borderStyle              = UITextBorderStyleRoundedRect;
+        // -------------------------------------------------------------------------------------------
+        self.regattaRacesTextField.userInteractionEnabled   = YES;
+        self.regattaRacesTextField.borderStyle              = UITextBorderStyleRoundedRect;
+        // -------------------------------------------------------------------------------------------
+        BOOL checked = self.theRegatta[@"threeDays"] != nil ? ((NSNumber *)self.theRegatta[@"threeDays"]).boolValue : NO;
+        self.threeDaysButton.selected                       = checked;
+        self.threeDaysButton.userInteractionEnabled         = YES;
+        // -------------------------------------------------------------------------------------------
+        self.selectorButton.enabled                         = YES;
+        self.selectorButton.titleLabel.textColor            = [UIColor whiteColor];
+        // -------------------------------------------------------------------------------------------
 
         if (self.theRegatta == nil) {
             self.dSelectedRegatta = [self firstRegatta];
         }
-        //self.editButtonItem.title = NSLocalizedString(@"Fertig", @"Fertig");
 
         UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-check"
                                               backgroundColor:[UIColor clearColor]
@@ -143,27 +165,31 @@
 
     }
     else {
-        self.regattaNameTextField.userInteractionEnabled = NO;
-        self.regattaNameTextField.borderStyle = UITextBorderStyleNone;
-        self.regattaNameTextField.text = self.theRegatta[@"title"];
-        // ----------------------------------------------------------------------------
-        self.regattaPosTextField.userInteractionEnabled = NO;
-        self.regattaPosTextField.borderStyle = UITextBorderStyleNone;
-        self.regattaPosTextField.text = self.theRegatta[@"pos"];
-        // ----------------------------------------------------------------------------
-        self.regattaFieldTextField.userInteractionEnabled = NO;
-        self.regattaFieldTextField.borderStyle = UITextBorderStyleNone;
-        self.regattaFieldTextField.text = self.theRegatta[@"field"];
-        // ----------------------------------------------------------------------------
-        self.regattaRacesTextField.userInteractionEnabled = NO;
-        self.regattaRacesTextField.borderStyle = UITextBorderStyleNone;
-        self.regattaRacesTextField.text = self.theRegatta[@"races"];
-        // ----------------------------------------------------------------------------
-        self.dSelectedRegatta = self.theRegatta[@"type"];
-        // ----------------------------------------------------------------------------
+        self.regattaNameTextField.userInteractionEnabled    = NO;
+        self.regattaNameTextField.borderStyle               = UITextBorderStyleNone;
+        self.regattaNameTextField.text                      = self.theRegatta[@"title"];
+        // -------------------------------------------------------------------------------------------
+        self.regattaPosTextField.userInteractionEnabled     = NO;
+        self.regattaPosTextField.borderStyle                = UITextBorderStyleNone;
+        self.regattaPosTextField.text                       = self.theRegatta[@"pos"];
+        // -------------------------------------------------------------------------------------------
+        self.regattaFieldTextField.userInteractionEnabled   = NO;
+        self.regattaFieldTextField.borderStyle              = UITextBorderStyleNone;
+        self.regattaFieldTextField.text                     = self.theRegatta[@"field"];
+        // -------------------------------------------------------------------------------------------
+        self.regattaRacesTextField.userInteractionEnabled   = NO;
+        self.regattaRacesTextField.borderStyle              = UITextBorderStyleNone;
+        self.regattaRacesTextField.text                     = self.theRegatta[@"races"];
+        // -------------------------------------------------------------------------------------------
+        BOOL checked = self.theRegatta[@"threeDays"] != nil ? ((NSNumber *)self.theRegatta[@"threeDays"]).boolValue : NO;
+        [self.threeDaysButton setSelected:checked];
+        self.threeDaysButton.userInteractionEnabled         = NO;
+
+        // -------------------------------------------------------------------------------------------
+        self.dSelectedRegatta                               = self.theRegatta[@"type"];
+        // -------------------------------------------------------------------------------------------
         self.selectorButton.enabled = NO;
         self.selectorButton.titleLabel.textColor = [UIColor grayColor];
-        //self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
         UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit"
                                               backgroundColor:[UIColor clearColor]
                                                     iconColor:[UIColor whiteColor]
@@ -188,7 +214,6 @@
     [self.selectorButton setTitle:self.dSelectedRegatta[@"title"] forState:UIControlStateDisabled];
     [self.selectorButton setTitle:self.dSelectedRegatta[@"title"] forState:UIControlStateSelected];
 
-    //self.selectorButton.titleLabel.text = self.dSelectedRegatta[@"title"];
     self.navigationController.toolbarHidden = YES;
 }
 
@@ -228,19 +253,22 @@
 
     if (flag == YES){
         // Change views to edit mode.
-        self.regattaNameTextField.userInteractionEnabled = YES;
-        self.regattaNameTextField.borderStyle = UITextBorderStyleRoundedRect;
-        // ----------------------------------------------------------------------------
-        self.regattaPosTextField.userInteractionEnabled = YES;
-        self.regattaPosTextField.borderStyle = UITextBorderStyleRoundedRect;
-        // ----------------------------------------------------------------------------
-        self.regattaFieldTextField.userInteractionEnabled = YES;
-        self.regattaFieldTextField.borderStyle = UITextBorderStyleRoundedRect;
-        // ----------------------------------------------------------------------------
-        self.regattaRacesTextField.userInteractionEnabled = YES;
-        self.regattaRacesTextField.borderStyle = UITextBorderStyleRoundedRect;
-        // ----------------------------------------------------------------------------
-        self.selectorButton.enabled = YES;
+        self.regattaNameTextField.userInteractionEnabled    = YES;
+        self.regattaNameTextField.borderStyle               = UITextBorderStyleRoundedRect;
+        // -------------------------------------------------------------------------------------------
+        self.regattaPosTextField.userInteractionEnabled     = YES;
+        self.regattaPosTextField.borderStyle                = UITextBorderStyleRoundedRect;
+        // -------------------------------------------------------------------------------------------
+        self.regattaFieldTextField.userInteractionEnabled   = YES;
+        self.regattaFieldTextField.borderStyle              = UITextBorderStyleRoundedRect;
+        // -------------------------------------------------------------------------------------------
+        self.regattaRacesTextField.userInteractionEnabled   = YES;
+        self.regattaRacesTextField.borderStyle              = UITextBorderStyleRoundedRect;
+        // -------------------------------------------------------------------------------------------
+        self.threeDaysButton.userInteractionEnabled         = YES;
+        // -------------------------------------------------------------------------------------------
+        self.selectorButton.enabled                         = YES;
+
         UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-check"
                                               backgroundColor:[UIColor clearColor]
                                                     iconColor:[UIColor whiteColor]
@@ -263,18 +291,20 @@
     }
     else {
         // Save the changes if needed and change the views to noneditable.
-        self.regattaNameTextField.userInteractionEnabled = NO;
-        self.regattaNameTextField.borderStyle = UITextBorderStyleNone;
-        // ----------------------------------------------------------------------------
-        self.regattaPosTextField.userInteractionEnabled = NO;
-        self.regattaPosTextField.borderStyle = UITextBorderStyleNone;
-        // ----------------------------------------------------------------------------
-        self.regattaFieldTextField.userInteractionEnabled = NO;
-        self.regattaFieldTextField.borderStyle = UITextBorderStyleNone;
-        // ----------------------------------------------------------------------------
-        self.regattaRacesTextField.userInteractionEnabled = NO;
-        self.regattaRacesTextField.borderStyle = UITextBorderStyleNone;
-        // ----------------------------------------------------------------------------
+        self.regattaNameTextField.userInteractionEnabled    = NO;
+        self.regattaNameTextField.borderStyle               = UITextBorderStyleNone;
+        // -------------------------------------------------------------------------------------------
+        self.regattaPosTextField.userInteractionEnabled     = NO;
+        self.regattaPosTextField.borderStyle                = UITextBorderStyleNone;
+        // -------------------------------------------------------------------------------------------
+        self.regattaFieldTextField.userInteractionEnabled   = NO;
+        self.regattaFieldTextField.borderStyle              = UITextBorderStyleNone;
+        // -------------------------------------------------------------------------------------------
+        self.regattaRacesTextField.userInteractionEnabled   = NO;
+        self.regattaRacesTextField.borderStyle              = UITextBorderStyleNone;
+        // -------------------------------------------------------------------------------------------
+        self.threeDaysButton.userInteractionEnabled         = NO;
+        // -------------------------------------------------------------------------------------------
         self.selectorButton.enabled = NO;
         //self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
         UIImage *normalEditIconImage = [UIImage imageWithIcon:@"icon-edit"
@@ -294,7 +324,7 @@
                                                                       style:UIBarButtonItemStylePlain
                                                                      target:self
                                                                      action:@selector(toggleEdit:)];
-        self.navigationItem.rightBarButtonItem = editButton;
+        self.navigationItem.rightBarButtonItem              = editButton;
 
         // ----------------------------------------------------------------------------
         [self store];
@@ -350,9 +380,11 @@ replacementString:(NSString *)string
 //----------------------------------------------------------------------------------------------------------------------
 - (void)store
 {
-    NSInteger pos = self.regattaPosTextField.text.integerValue;
-    NSInteger field = self.regattaFieldTextField.text.integerValue;
-    float regattaFactor = ((NSNumber *)self.dSelectedRegatta[@"factor"]).floatValue;
+    NSInteger pos           = self.regattaPosTextField.text.integerValue;
+    NSInteger field         = self.regattaFieldTextField.text.integerValue;
+    BOOL threeDays          = self.threeDaysButton.selected;
+
+    float regattaFactor     = ((NSNumber *)self.dSelectedRegatta[@"factor"]).floatValue;
 
     // some basic checks
     if (pos == 0 || field == 0 || pos > field || pos > 1500 || field > 1500) {
@@ -365,19 +397,20 @@ replacementString:(NSString *)string
                         withRegattaFactor:regattaFactor];
 
     NSDictionary *aRegatta = @{
-                               @"title" : self.regattaNameTextField.text,
-                               @"pos"   : self.regattaPosTextField.text,
-                               @"field" : self.regattaFieldTextField.text,
-                               @"races" : self.regattaRacesTextField.text,
-                               @"type"  : self.dSelectedRegatta,
-                               @"score" : [NSNumber numberWithFloat:score]
+                               @"title"     : self.regattaNameTextField.text,
+                               @"pos"       : self.regattaPosTextField.text,
+                               @"field"     : self.regattaFieldTextField.text,
+                               @"races"     : self.regattaRacesTextField.text,
+                               @"threeDays" : [NSNumber numberWithBool:threeDays],
+                               @"type"      : self.dSelectedRegatta,
+                               @"score"     : [NSNumber numberWithFloat:score]
                                };
 
     if (self.currentIndex == -1) {
-        [[SimpleDataProvider sharedInstance]addObject:aRegatta];
+        [[SimpleDataProvider sharedInstance] addObject:aRegatta];
     }
     else {
-        [[SimpleDataProvider sharedInstance]replaceObject:aRegatta atIndex:self.currentIndex];
+        [[SimpleDataProvider sharedInstance] replaceObject:aRegatta atIndex:self.currentIndex];
     }
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -541,4 +574,8 @@ replacementString:(NSString *)string
     return NO;
 }
 
+- (IBAction)toggleThreeDays:(id)sender
+{
+    self.threeDaysButton.selected = !self.threeDaysButton.selected;
+}
 @end

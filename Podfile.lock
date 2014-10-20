@@ -1,11 +1,11 @@
 PODS:
-  - FontAwesome+iOS (0.1.4)
+  - FontAwesome+iOS (HEAD based on 0.1.4)
   - MKNetworkKit (0.87):
     - Reachability (~> 3.1.0)
   - Reachability (3.1.1)
 
 DEPENDENCIES:
-  - FontAwesome+iOS
+  - FontAwesome+iOS (HEAD)
   - MKNetworkKit
 
 SPEC CHECKSUMS:
@@ -13,4 +13,4 @@ SPEC CHECKSUMS:
   MKNetworkKit: 83e6296a8d42e98a71880424a889773654846d74
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
 
-COCOAPODS: 0.34.1
+COCOAPODS: 0.34.4

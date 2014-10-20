@@ -205,30 +205,29 @@
 
 #ifdef A
 
-    cell.titleLabel.text = [SimpleDataProvider sharedInstance].theDataStorageArray[indexPath.row][@"title"];
-    cell.scoreLabel.text = [NSString stringWithFormat:@"%.3f",
-                            ((NSNumber *)[SimpleDataProvider sharedInstance].theDataStorageArray
-                             [indexPath.row][@"score"]).floatValue];
+    NSDictionary *currentRegattaRecord = [SimpleDataProvider sharedInstance].theDataStorageArray[indexPath.row];
+    cell.titleLabel.text = currentRegattaRecord[@"title"];
+    cell.scoreLabel.text = [NSString stringWithFormat:@"%.3f", ((NSNumber *)currentRegattaRecord[@"score"]).floatValue];
     cell.positLabel.text = [NSString stringWithFormat:@"%ld/%ld",
-                            (long)((NSNumber *)[SimpleDataProvider sharedInstance].theDataStorageArray
-                                   [indexPath.row][@"pos"]).integerValue,
-                            (long)((NSNumber *)[SimpleDataProvider sharedInstance].theDataStorageArray
-                                   [indexPath.row][@"field"]).integerValue];
+                            (long)((NSNumber *)currentRegattaRecord[@"pos"]).integerValue,
+                            (long)((NSNumber *)currentRegattaRecord[@"field"]).integerValue];
+    int races = ((NSNumber *)currentRegattaRecord[@"races"]).integerValue;
+    BOOL threeDays = currentRegattaRecord[@"threeDays"] != nil ?
+    ((NSNumber *)currentRegattaRecord[@"threeDays"]).boolValue : NO;
+
     cell.mFactorLabel.text = [NSString stringWithFormat:@"%d",
-                              [[SimpleDataProvider sharedInstance] mFactor:
-                               ((NSNumber *)[SimpleDataProvider sharedInstance].theDataStorageArray
-                                [indexPath.row][@"races"]).intValue]];
+                              [[SimpleDataProvider sharedInstance]mFactor:races atLeastThreeDays:threeDays]];
+
 
 #else
-    cell.titleLabel.text = [SimpleDataProvider sharedInstance].theDataStorageArray[indexPath.row][@"title"];
+    NSDictionary *currentRegattaRecord = [SimpleDataProvider sharedInstance].theDataStorageArray[indexPath.row];
+
+    cell.titleLabel.text = currentRegattaRecord[@"title"];
     cell.scoreLabel.text = [NSString stringWithFormat:@"%.3f",
-                            ((NSNumber *)[SimpleDataProvider sharedInstance].theDataStorageArray
-                             [indexPath.row][@"score"]).floatValue];
+                            ((NSNumber *)currentRegattaRecord[@"score"]).floatValue];
     cell.positLabel.text = [NSString stringWithFormat:@"%ld/%ld",
-                            (long)((NSNumber *)[SimpleDataProvider sharedInstance].theDataStorageArray
-                                   [indexPath.row][@"posOfYou"]).integerValue,
-                            (long)((NSNumber *)[SimpleDataProvider sharedInstance].theDataStorageArray
-                                   [indexPath.row][@"numberOfSailors"]).integerValue];
+                            (long)((NSNumber *)currentRegattaRecord[@"posOfYou"]).integerValue,
+                            (long)((NSNumber *)currentRegattaRecord[@"numberOfSailors"]).integerValue];
 
 
 #endif

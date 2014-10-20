@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '6.1'
 link_with 'Ranglistenpunkte-A', 'Ranglistenpunkte-B'
 pod 'MKNetworkKit'
-pod 'FontAwesome+iOS'
+pod 'FontAwesome+iOS', :head
 
 post_install do | installer |
     require 'fileutils'

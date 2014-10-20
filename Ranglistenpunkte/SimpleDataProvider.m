@@ -96,10 +96,11 @@ static NSString *kArrayKey = @"storedDataArray";
     [self persist];
 }
 
+
 //----------------------------------------------------------------------------------------------------------------------
-#pragma mark - Determine the "m" factor
+#pragma mark - Determine the "m" factor for a regatta taking at least three days
 //----------------------------------------------------------------------------------------------------------------------
-- (int)mFactor:(NSInteger)numberOfRaces
+- (int)mFactor:(NSInteger)numberOfRaces atLeastThreeDays:(BOOL)threeDays
 {
     switch (abs((int)numberOfRaces)) {
         case 0:
@@ -121,10 +122,11 @@ static NSString *kArrayKey = @"storedDataArray";
             return 4;
             break;
         default:
-            return 5;
+            return threeDays ? 5 : 4;
             break;
     }
 }
+
 
 //----------------------------------------------------------------------------------------------------------------------
 #pragma mark - Sort the regattas by score
@@ -148,18 +150,20 @@ static NSString *kArrayKey = @"storedDataArray";
 //----------------------------------------------------------------------------------------------------------------------
 - (CGFloat)bestScoreA
 {
-    float bestScore = 0.00;
-
     if (self.theDataStorageArray == nil)
-        return bestScore;
+        return 0.0f;
 
     int counter             = 0;
     float allPoints         = 0.0f;
     NSDictionary *regatta   = nil;
 
     for (regatta in self.theDataStorageArray) {
+
         NSNumber *points    = regatta[@"score"];
-        NSNumber *mFactor   = [NSNumber numberWithInteger:[self mFactor:((NSNumber *)regatta[@"races"]).integerValue]];
+        NSInteger races     = ((NSNumber *)regatta[@"races"]).integerValue;
+        BOOL threeDays      = regatta[@"threeDays"] != nil ? ((NSNumber *)regatta[@"threeDays"]).boolValue : NO;
+        NSNumber *mFactor   = [NSNumber numberWithInteger:[self mFactor:races atLeastThreeDays:threeDays]];
+
         for (int i = 0; i < mFactor.intValue; i++) {
             if (counter < 9) {
                 counter ++;
@@ -167,8 +171,7 @@ static NSString *kArrayKey = @"storedDataArray";
             }
         }
     }
-    bestScore = counter == 9 ? (allPoints/counter) : 0.00f;
-    return bestScore;
+    return counter == 9 ? (allPoints/counter) : 0.00f;
 }
 
 
@@ -177,10 +180,8 @@ static NSString *kArrayKey = @"storedDataArray";
 //----------------------------------------------------------------------------------------------------------------------
 - (CGFloat)bestScoreB
 {
-    float bestScore = 0.00;
-
     if (self.theDataStorageArray == nil)
-        return bestScore;
+        return 0.0f;
 
     int counter             = 0;
     float allPoints         = 0.0f;
@@ -190,13 +191,11 @@ static NSString *kArrayKey = @"storedDataArray";
         NSNumber *points = regatta[@"score"];
         allPoints += points.floatValue;
         counter ++;
-        NSLog(@" : %d", counter);
         if (counter == 3) {
             break;
         }
     }
-    bestScore = counter == 3 ? (allPoints/counter) : 0.00f;
-    return bestScore;
+    return counter == 3 ? (allPoints/counter) : 0.00f;
 }
 
 @end
