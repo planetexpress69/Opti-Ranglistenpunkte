@@ -211,22 +211,27 @@
     cell.positLabel.text = [NSString stringWithFormat:@"%ld/%ld",
                             (long)((NSNumber *)currentRegattaRecord[@"pos"]).integerValue,
                             (long)((NSNumber *)currentRegattaRecord[@"field"]).integerValue];
-    NSInteger races = ((NSNumber *)currentRegattaRecord[@"races"]).integerValue;
+    int races = ((NSNumber *)currentRegattaRecord[@"races"]).integerValue;
     BOOL threeDays = currentRegattaRecord[@"threeDays"] != nil ?
     ((NSNumber *)currentRegattaRecord[@"threeDays"]).boolValue : NO;
 
     cell.mFactorLabel.text = [NSString stringWithFormat:@"%d",
                               [[SimpleDataProvider sharedInstance]mFactor:races atLeastThreeDays:threeDays]];
-#else
 
+
+#else
     NSDictionary *currentRegattaRecord = [SimpleDataProvider sharedInstance].theDataStorageArray[indexPath.row];
+
     cell.titleLabel.text = currentRegattaRecord[@"title"];
     cell.scoreLabel.text = [NSString stringWithFormat:@"%.3f",
                             ((NSNumber *)currentRegattaRecord[@"score"]).floatValue];
     cell.positLabel.text = [NSString stringWithFormat:@"%ld/%ld",
                             (long)((NSNumber *)currentRegattaRecord[@"posOfYou"]).integerValue,
                             (long)((NSNumber *)currentRegattaRecord[@"numberOfSailors"]).integerValue];
+
+
 #endif
+
 
     cell.textLabel.textColor = [UIColor blackColor];
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
