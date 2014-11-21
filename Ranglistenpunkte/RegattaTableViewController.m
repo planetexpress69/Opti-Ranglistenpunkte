@@ -109,9 +109,9 @@
 - (IBAction)info:(id)sender
 {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        sb = [UIStoryboard storyboardWithName:@"Main-iPad" bundle:nil];
-    }
+    //if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    //    sb = [UIStoryboard storyboardWithName:@"Main-iPad" bundle:nil];
+    //}
     UINavigationController *aboutNavigationController =
     [sb instantiateViewControllerWithIdentifier:@"AboutNavigationController"];
     [self presentViewController:aboutNavigationController animated:YES completion:^{
@@ -128,9 +128,9 @@
 - (IBAction)callList:(id)sender
 {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        sb = [UIStoryboard storyboardWithName:@"Main-iPad" bundle:nil];
-    }
+    //if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    //    sb = [UIStoryboard storyboardWithName:@"Main-iPad" bundle:nil];
+    //}
     UINavigationController *listNavigationController =
     [sb instantiateViewControllerWithIdentifier:@"ListNavigationController"];
     [self presentViewController:listNavigationController animated:YES completion:^{
@@ -211,7 +211,7 @@
     cell.positLabel.text = [NSString stringWithFormat:@"%ld/%ld",
                             (long)((NSNumber *)currentRegattaRecord[@"pos"]).integerValue,
                             (long)((NSNumber *)currentRegattaRecord[@"field"]).integerValue];
-    int races = ((NSNumber *)currentRegattaRecord[@"races"]).integerValue;
+    int races = ((NSNumber *)currentRegattaRecord[@"races"]).intValue;
     BOOL threeDays = currentRegattaRecord[@"threeDays"] != nil ?
     ((NSNumber *)currentRegattaRecord[@"threeDays"]).boolValue : NO;
 
