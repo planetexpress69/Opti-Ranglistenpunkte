@@ -9,6 +9,7 @@
 #import "ListViewController.h"
 #import "LovelyNetworkEngine.h"
 #import "RankingCell.h"
+#import "RankingDetailViewController.h"
 
 
 @interface ListViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -62,6 +63,8 @@
 
     self.searchDisplayController.searchBar.translucent = NO;
 
+    [self fetchData];
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -75,52 +78,6 @@
 {
     [super viewDidAppear:animated];
     
-    [self.theSpinner startAnimating];
-
-    [self.lovelyNetworkEngine fetchPayloadForPath:@"scrape.php"
-                                       onCompletion:^(MKNetworkOperation *completedOperation)
-     {
-         NSError *parsingError = nil;
-         NSArray *payload =
-         [NSJSONSerialization JSONObjectWithData:completedOperation.responseData
-                                         options:NSJSONReadingAllowFragments
-                                           error:&parsingError];
-
-         if (payload && !parsingError) {
-
-             if (payload.count > 0) {
-
-                 self.theDatasource = [payload sortedArrayUsingComparator:^NSComparisonResult(id obj1,
-                                                                                              id obj2) {
-                     int fFirst = ((NSNumber *)(NSDictionary *)obj1[@"pos"]).intValue;
-                     int fSecnd = ((NSNumber *)(NSDictionary *)obj2[@"pos"]).intValue;
-                     if (fFirst > fSecnd)
-                         return NSOrderedDescending;
-                     else if (fFirst < fSecnd)
-                         return NSOrderedAscending;
-                     return NSOrderedSame;
-                 }];
-                 self.errorMessageKey = nil;
-             }
-             else {
-                 self.errorMessageKey = @"NODATAERROR";
-             }
-         }
-         else {
-             self.errorMessageKey = @"PARSINGERROR";
-         }
-
-         [self.theTableView reloadData];
-         [self.theSpinner stopAnimating];
-
-     }
-     onError:^(NSError *error) {
-         // network error?
-         DLog(@"error             : %@", error);
-         self.errorMessageKey = @"NETWORKERROR";
-         [self.theTableView reloadData];
-         [self.theSpinner stopAnimating];
-     }];
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -130,13 +87,54 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)fetchData
+{
+    [self.theSpinner startAnimating];
+
+    [self.lovelyNetworkEngine fetchPayloadForPath:@"scrape.php" onCompletion:^(MKNetworkOperation *completedOperation) {
+        NSError *parsingError = nil;
+        NSArray *payload =
+        [NSJSONSerialization JSONObjectWithData:completedOperation.responseData
+                                        options:NSJSONReadingAllowFragments
+                                          error:&parsingError];
+        if (payload && !parsingError) {
+            if (payload.count > 0) {
+                self.theDatasource = [payload sortedArrayUsingComparator:^NSComparisonResult(id obj1,
+                                                                                             id obj2) {
+                    int fFirst = ((NSNumber *)(NSDictionary *)obj1[@"pos"]).intValue;
+                    int fSecnd = ((NSNumber *)(NSDictionary *)obj2[@"pos"]).intValue;
+                    if (fFirst > fSecnd)
+                        return NSOrderedDescending;
+                    else if (fFirst < fSecnd)
+                        return NSOrderedAscending;
+                    return NSOrderedSame;
+                }];
+                self.errorMessageKey = nil;
+            }
+            else {
+                self.errorMessageKey = @"NODATAERROR";
+            }
+        }
+        else {
+            self.errorMessageKey = @"PARSINGERROR";
+        }
+
+        [self.theTableView reloadData];
+        [self.theSpinner stopAnimating];
+
+    } onError:^(NSError *error) {
+        // network error?
+        DLog(@"error             : %@", error);
+        self.errorMessageKey = @"NETWORKERROR";
+        [self.theTableView reloadData];
+        [self.theSpinner stopAnimating];
+    }];
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 - (IBAction)close:(id)sender
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES
-                                                      completion:^{
-                                                          //
-                                                      }];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -151,10 +149,9 @@
         cell.posLabel.text = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"pos"]).intValue];
         cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"firstname"], elem[@"name"]];
         cell.sailLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"sailCountry"], elem[@"sailNumber"]];
-
         cell.scoreLabel.text = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
         cell.yearLabel.text = elem[@"yob"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     } else {
         NSDictionary *elem = self.theDatasource[indexPath.row];
         cell.posLabel.text = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"pos"]).intValue];
@@ -163,7 +160,7 @@
 
         cell.scoreLabel.text = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
         cell.yearLabel.text = elem[@"yob"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     }
     return cell;
 #else
@@ -233,6 +230,37 @@
     NSLocalizedString(scoreListDescKey, scoreListDescKey) :
     NSLocalizedString(self.errorMessageKey, self.errorMessageKey);
     return textView;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    NSLog(@"Hello! %@", segue.identifier);
+
+
+#ifdef A
+    NSDictionary *elem= nil;
+    NSIndexPath *selectedRowsIndexPath = nil;
+    RankingDetailViewController *detailViewController = [segue destinationViewController];
+
+    if (self.theFilteredDatasource != nil && self.theFilteredDatasource.count > 0) {
+        selectedRowsIndexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        elem = self.theFilteredDatasource[selectedRowsIndexPath.row];
+        NSLog(@"selem: %@", elem);
+
+    } else {
+        selectedRowsIndexPath = [self.theTableView indexPathForSelectedRow];
+        elem = self.theDatasource[selectedRowsIndexPath.row];
+        NSLog(@"relem: %@", elem);
+    }
+    [self.theTableView deselectRowAtIndexPath:selectedRowsIndexPath animated:YES];
+    detailViewController.theDataSource = elem;
+
+#else
+#endif
+
+
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

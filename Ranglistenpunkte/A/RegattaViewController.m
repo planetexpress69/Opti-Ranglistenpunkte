@@ -9,6 +9,7 @@
 #import "RegattaViewController.h"
 #import "RegattaTableViewController.h"
 #import "SimpleDataProvider.h"
+#import "UIImage+JAKExtensions.h"
 #import <FontAwesome+iOS/UIImage+FontAwesome.h>
 
 
@@ -62,8 +63,16 @@
     self.regattaRacesTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.regattaRacesTextField.returnKeyType = UIReturnKeyNext;
 
-    self.selectorButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:
-                                           UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 16.0f : 36.0f];
+    self.selectorButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f];
+
+    [self.selectorButton setBackgroundImage:[UIImage imageWithColor:THECOLOR] forState:UIControlStateNormal];
+    [self.selectorButton setBackgroundImage:[UIImage imageWithColor:[UIColor blackColor]] forState:UIControlStateHighlighted];
+    [self.selectorButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateDisabled];
+
+    [self.selectorButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.selectorButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [self.selectorButton setTitleColor:THECOLOR forState:UIControlStateDisabled];
+
 
     [self.selectorButton.layer setCornerRadius:self.selectorButton.frame.size.height / 2];
     [self.selectorButton.layer setBorderWidth:0.0];

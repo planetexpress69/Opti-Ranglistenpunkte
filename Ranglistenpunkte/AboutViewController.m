@@ -7,7 +7,7 @@
 //
 
 #import "AboutViewController.h"
-
+#import "UIImage+JAKExtensions.h"
 
 @interface AboutViewController () <UITextViewDelegate>
 //----------------------------------------------------------------------------------------------------------------------
@@ -75,8 +75,11 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.toolbar.translucent = NO;
 
-    self.ackButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:
-                                           UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 16.0f : 36.0f];
+    [self.ackButton setBackgroundImage:[UIImage imageWithColor:THECOLOR] forState:UIControlStateNormal];
+    [self.ackButton setBackgroundImage:[UIImage imageWithColor:[UIColor blackColor]] forState:UIControlStateHighlighted];
+    [self.ackButton setBackgroundImage:[UIImage imageWithColor:[UIColor lightGrayColor]] forState:UIControlStateDisabled];
+
+    self.ackButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f];
 
     [self.ackButton.layer setCornerRadius:self.ackButton.frame.size.height / 2];
     [self.ackButton.layer setBorderWidth:0.0];

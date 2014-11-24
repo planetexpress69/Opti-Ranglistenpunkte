@@ -29,6 +29,9 @@
 		5B049CBE1964346A006596E1 /* logo_rs.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B85B1281920FC5400301923 /* logo_rs.png */; };
 		5B049CBF1964346A006596E1 /* logo_jakota@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B85B1271920FC5400301923 /* logo_jakota@2x.png */; };
 		5B049CC11964346A006596E1 /* logo_rs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B85B1291920FC5400301923 /* logo_rs@2x.png */; };
+		5B21F5F21A1F9D520019B5A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B21F5F11A1F9D520019B5A2 /* LaunchScreen.xib */; };
+		5B21F5F51A1FA4160019B5A2 /* UIImage+JAKExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B21F5F41A1FA4160019B5A2 /* UIImage+JAKExtensions.m */; };
+		5B21F5F61A1FA4160019B5A2 /* UIImage+JAKExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B21F5F41A1FA4160019B5A2 /* UIImage+JAKExtensions.m */; };
 		5B3FB1B01966A99A00811527 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3FB1B21966A99A00811527 /* Main.storyboard */; };
 		5B3FB1B71966A9B100811527 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3FB1B91966A9B100811527 /* Main.storyboard */; };
 		5B3FB1BE1966A9F000811527 /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B3FB1C01966A9F000811527 /* about.txt */; };
@@ -37,7 +40,6 @@
 		5B3FB1CD1966AACC00811527 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B3FB1CF1966AACC00811527 /* Localizable.strings */; };
 		5B552F0819E3DD0800D95B56 /* Acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 5B552F0519E3DCCB00D95B56 /* Acknowledgements.markdown */; };
 		5B552F0919E3DD1500D95B56 /* Acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 5B552F0519E3DCCB00D95B56 /* Acknowledgements.markdown */; };
-		5B6305D91A1F876B008AFE01 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B6305D81A1F876B008AFE01 /* Launch.storyboard */; };
 		5B75FF9B192CABD6007C3990 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B75FF9A192CABD6007C3990 /* ListViewController.m */; };
 		5B75FF9E192CC5D0007C3990 /* LovelyNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B75FF9D192CC5D0007C3990 /* LovelyNetworkEngine.m */; };
 		5B75FFA1192CD313007C3990 /* RankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B75FFA0192CD313007C3990 /* RankingCell.m */; };
@@ -64,6 +66,9 @@
 		5BD0AE0F19649CE40051B2E3 /* RegattaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD0AE0D19649CE40051B2E3 /* RegattaCell.m */; };
 		5BD1A2F71964563D00A2A416 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD1A2EA1964563D00A2A416 /* Images.xcassets */; };
 		5BD1A310196456B800A2A416 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD1A303196456B800A2A416 /* Images.xcassets */; };
+		5BF96AA41A2361900085C8B1 /* RankingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF96AA31A2361900085C8B1 /* RankingDetailViewController.m */; };
+		5BF96AA71A2365350085C8B1 /* SailorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF96AA61A2365350085C8B1 /* SailorCell.m */; };
+		5BF96AAA1A2365690085C8B1 /* RegattaDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF96AA91A2365690085C8B1 /* RegattaDetailCell.m */; };
 		BEC0A2CCC13C4646B78C779E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C943E6027942F480224E2E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +78,9 @@
 		5B007BAA193CA190000CF53A /* AckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AckViewController.h; sourceTree = "<group>"; };
 		5B007BAB193CA190000CF53A /* AckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AckViewController.m; sourceTree = "<group>"; };
 		5B049CCD1964346A006596E1 /* Punkte A Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Punkte A Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B21F5F11A1F9D520019B5A2 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		5B21F5F31A1FA4160019B5A2 /* UIImage+JAKExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JAKExtensions.h"; sourceTree = "<group>"; };
+		5B21F5F41A1FA4160019B5A2 /* UIImage+JAKExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JAKExtensions.m"; sourceTree = "<group>"; };
 		5B3FB1B11966A99A00811527 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B3FB1B41966A9A000811527 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5B3FB1B61966A9A100811527 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -89,7 +97,6 @@
 		5B3FB1D01966AAD200811527 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B3FB1D11966AAD300811527 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B552F0519E3DCCB00D95B56 /* Acknowledgements.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Acknowledgements.markdown; sourceTree = "<group>"; };
-		5B6305D81A1F876B008AFE01 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		5B75FF99192CABD6007C3990 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		5B75FF9A192CABD6007C3990 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		5B75FF9C192CC5D0007C3990 /* LovelyNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LovelyNetworkEngine.h; sourceTree = "<group>"; };
@@ -131,6 +138,12 @@
 		5BD1A303196456B800A2A416 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5BD1A305196456B800A2A416 /* Ranglistenpunkte-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Ranglistenpunkte-Info.plist"; sourceTree = "<group>"; };
 		5BD1A306196456B800A2A416 /* Ranglistenpunkte-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Ranglistenpunkte-Prefix.pch"; sourceTree = "<group>"; };
+		5BF96AA21A2361900085C8B1 /* RankingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingDetailViewController.h; sourceTree = "<group>"; };
+		5BF96AA31A2361900085C8B1 /* RankingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingDetailViewController.m; sourceTree = "<group>"; };
+		5BF96AA51A2365350085C8B1 /* SailorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SailorCell.h; sourceTree = "<group>"; };
+		5BF96AA61A2365350085C8B1 /* SailorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SailorCell.m; sourceTree = "<group>"; };
+		5BF96AA81A2365690085C8B1 /* RegattaDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegattaDetailCell.h; sourceTree = "<group>"; };
+		5BF96AA91A2365690085C8B1 /* RegattaDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegattaDetailCell.m; sourceTree = "<group>"; };
 		E6C943E6027942F480224E2E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -222,6 +235,14 @@
 				5B007BAB193CA190000CF53A /* AckViewController.m */,
 				5B75FF99192CABD6007C3990 /* ListViewController.h */,
 				5B75FF9A192CABD6007C3990 /* ListViewController.m */,
+				5BF96AA21A2361900085C8B1 /* RankingDetailViewController.h */,
+				5BF96AA31A2361900085C8B1 /* RankingDetailViewController.m */,
+				5B21F5F31A1FA4160019B5A2 /* UIImage+JAKExtensions.h */,
+				5B21F5F41A1FA4160019B5A2 /* UIImage+JAKExtensions.m */,
+				5BF96AA51A2365350085C8B1 /* SailorCell.h */,
+				5BF96AA61A2365350085C8B1 /* SailorCell.m */,
+				5BF96AA81A2365690085C8B1 /* RegattaDetailCell.h */,
+				5BF96AA91A2365690085C8B1 /* RegattaDetailCell.m */,
 				5B85B0E81920FBAA00301923 /* Supporting Files */,
 			);
 			path = Ranglistenpunkte;
@@ -275,6 +296,7 @@
 				5BD1A303196456B800A2A416 /* Images.xcassets */,
 				5BD1A305196456B800A2A416 /* Ranglistenpunkte-Info.plist */,
 				5BD1A306196456B800A2A416 /* Ranglistenpunkte-Prefix.pch */,
+				5B21F5F11A1F9D520019B5A2 /* LaunchScreen.xib */,
 			);
 			name = A;
 			path = Ranglistenpunkte/A;
@@ -284,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				5B3FB1B21966A99A00811527 /* Main.storyboard */,
-				5B6305D81A1F876B008AFE01 /* Launch.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -400,8 +421,8 @@
 				5B049CBE1964346A006596E1 /* logo_rs.png in Resources */,
 				5B049CBF1964346A006596E1 /* logo_jakota@2x.png in Resources */,
 				5B3FB1BE1966A9F000811527 /* about.txt in Resources */,
-				5B6305D91A1F876B008AFE01 /* Launch.storyboard in Resources */,
 				5BC1B5351964640300B06706 /* aRegattas.json in Resources */,
+				5B21F5F21A1F9D520019B5A2 /* LaunchScreen.xib in Resources */,
 				5B049CC11964346A006596E1 /* logo_rs@2x.png in Resources */,
 				5BD1A310196456B800A2A416 /* Images.xcassets in Resources */,
 				5B552F0819E3DD0800D95B56 /* Acknowledgements.markdown in Resources */,
@@ -520,10 +541,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B21F5F51A1FA4160019B5A2 /* UIImage+JAKExtensions.m in Sources */,
 				5BC1B5331964633500B06706 /* RegattaViewController.m in Sources */,
+				5BF96AA41A2361900085C8B1 /* RankingDetailViewController.m in Sources */,
 				5BD0AE0E19649CE40051B2E3 /* RegattaCell.m in Sources */,
 				5B049CA01964346A006596E1 /* main.m in Sources */,
 				5B049CA11964346A006596E1 /* SimpleDataProvider.m in Sources */,
+				5BF96AAA1A2365690085C8B1 /* RegattaDetailCell.m in Sources */,
 				5B049CA21964346A006596E1 /* ListViewController.m in Sources */,
 				5B049CA31964346A006596E1 /* RegattaTableViewController.m in Sources */,
 				5B049CA41964346A006596E1 /* RankingCell.m in Sources */,
@@ -531,6 +555,7 @@
 				5B049CA61964346A006596E1 /* LovelyNetworkEngine.m in Sources */,
 				5B049CA81964346A006596E1 /* AckViewController.m in Sources */,
 				5B049CA91964346A006596E1 /* JAKAppDelegate.m in Sources */,
+				5BF96AA71A2365350085C8B1 /* SailorCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +563,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B21F5F61A1FA4160019B5A2 /* UIImage+JAKExtensions.m in Sources */,
 				5BC1B530196462F800B06706 /* RegattaViewController.m in Sources */,
 				5BD0AE0F19649CE40051B2E3 /* RegattaCell.m in Sources */,
 				5B85B0EE1920FBAA00301923 /* main.m in Sources */,
@@ -615,6 +641,7 @@
 			baseConfigurationReference = 1CAA450A067A4AB7EC135943 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Martin Kautz (5CL7HE474F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Kautz (5CL7HE474F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -638,6 +665,7 @@
 			baseConfigurationReference = 338725A2CB4C12B70765B932 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
