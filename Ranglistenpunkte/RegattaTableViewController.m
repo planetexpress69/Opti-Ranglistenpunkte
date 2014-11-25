@@ -35,9 +35,6 @@
                                                                  action:@selector(toggleEdit:)];
     self.navigationItem.leftBarButtonItem = editButton;
 
-    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    //self.editButtonItem.title = NSLocalizedString(@"Edit", @"Edit");
-
     UIView *containerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 150, 39)];
     UILabel *customLabelView = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 150, 39)];
 

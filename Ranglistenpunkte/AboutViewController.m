@@ -53,9 +53,13 @@
         self.ackButton.tintColor = THECOLOR;
     }
 
+    CGFloat fontSize = 15.0f;
 
+    if (IS_IPHONE_6 || IS_IPHONE_6P) {
+        fontSize = 20.0f;
+    }
 
-    self.theTextView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f];
+    self.theTextView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:fontSize];
 
     NSString *sPathToAboutText = [[NSBundle mainBundle]pathForResource:@"about"
                                                                 ofType:@"txt"];

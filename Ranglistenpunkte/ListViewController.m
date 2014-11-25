@@ -31,62 +31,42 @@
 {
     [super viewDidLoad];
 
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-        [[UISearchBar appearance] setTintColor:THECOLOR];
-        self.searchDisplayController.searchBar.tintColor = THECOLOR;
-    } else {
-        [[UISearchBar appearance] setBarTintColor:THECOLOR];
-        self.searchDisplayController.searchBar.barTintColor = THECOLOR;
-    }
-
-    // Do any additional setup after loading the view.
-
 #ifdef A
     self.title = NSLocalizedString(@"Score list DODV", @"Score list DODV");
 #else
     self.title = NSLocalizedString(@"Score list opti-mv.de", @"Score list opti-mv.de");
 #endif
-    self.lovelyNetworkEngine                    = [[LovelyNetworkEngine alloc]initWithHostName:@"www.teambender.de"];
 
-    self.theTableView.delegate                  = self;
-    self.theTableView.dataSource                = self;
+    self.lovelyNetworkEngine                    = [[LovelyNetworkEngine alloc] initWithHostName:@"www.teambender.de"];
 
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.toolbar.translucent = NO;
-
-    self.theSpinner.hidesWhenStopped            = YES;
-
-    self.theTableView.backgroundView            = nil; // hack the ios6 table background
-    self.theTableView.backgroundColor           = LIGHTBACK;
-
-    self.searchDisplayController.searchBar.backgroundColor = THECOLOR;
-
-    self.searchDisplayController.searchBar.translucent = NO;
+    self.theTableView.delegate                              = self;
+    self.theTableView.dataSource                            = self;
+    self.navigationController.navigationBar.translucent     = NO;
+    self.navigationController.toolbar.translucent           = NO;
+    self.theSpinner.hidesWhenStopped                        = YES;
+    self.theTableView.backgroundView                        = nil; // hack the ios6 table background
+    self.theTableView.backgroundColor                       = LIGHTBACK;
+    self.searchDisplayController.searchBar.backgroundColor  = THECOLOR;
+    self.searchDisplayController.searchBar.translucent      = NO;
 
     [self fetchData];
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@""
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
 }
+
 
 //----------------------------------------------------------------------------------------------------------------------
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-}
-
+#pragma mark - Fetch the ranking list
 //----------------------------------------------------------------------------------------------------------------------
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)fetchData
 {
     [self.theSpinner startAnimating];
@@ -131,12 +111,18 @@
     }];
 }
 
+
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - Dismiss the view
 //----------------------------------------------------------------------------------------------------------------------
 - (IBAction)close:(id)sender
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
+
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - UITableViewDataSource protocol methods
 //----------------------------------------------------------------------------------------------------------------------
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -145,43 +131,42 @@
 
 #ifdef A
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        NSDictionary *elem = self.theFilteredDatasource[indexPath.row];
-        cell.posLabel.text = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"pos"]).intValue];
-        cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"firstname"], elem[@"name"]];
-        cell.sailLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"sailCountry"], elem[@"sailNumber"]];
-        cell.scoreLabel.text = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
-        cell.yearLabel.text = elem[@"yob"];
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        NSDictionary *elem      = self.theFilteredDatasource[indexPath.row];
+        cell.posLabel.text      = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"pos"]).intValue];
+        cell.nameLabel.text     = [NSString stringWithFormat:@"%@ %@", elem[@"firstname"], elem[@"name"]];
+        cell.sailLabel.text     = [NSString stringWithFormat:@"%@ %@", elem[@"sailCountry"], elem[@"sailNumber"]];
+        cell.scoreLabel.text    = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
+        cell.yearLabel.text     = elem[@"yob"];
+        cell.selectionStyle     = UITableViewCellSelectionStyleDefault;
     } else {
-        NSDictionary *elem = self.theDatasource[indexPath.row];
-        cell.posLabel.text = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"pos"]).intValue];
-        cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"firstname"], elem[@"name"]];
-        cell.sailLabel.text = [NSString stringWithFormat:@"%@ %@", elem[@"sailCountry"], elem[@"sailNumber"]];
-
-        cell.scoreLabel.text = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
-        cell.yearLabel.text = elem[@"yob"];
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        NSDictionary *elem      = self.theDatasource[indexPath.row];
+        cell.posLabel.text      = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"pos"]).intValue];
+        cell.nameLabel.text     = [NSString stringWithFormat:@"%@ %@", elem[@"firstname"], elem[@"name"]];
+        cell.sailLabel.text     = [NSString stringWithFormat:@"%@ %@", elem[@"sailCountry"], elem[@"sailNumber"]];
+        cell.scoreLabel.text    = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
+        cell.yearLabel.text     = elem[@"yob"];
+        cell.selectionStyle     = UITableViewCellSelectionStyleDefault;
     }
     return cell;
 #else
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        NSDictionary *elem = self.theFilteredDatasource[indexPath.row];
-        cell.posLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
-        cell.nameLabel.text = elem[@"name"];
-        cell.sailLabel.text = elem[@"firstname"];
+        NSDictionary *elem      = self.theFilteredDatasource[indexPath.row];
+        cell.posLabel.text      = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
+        cell.nameLabel.text     = elem[@"name"];
+        cell.sailLabel.text     = elem[@"firstname"];
 
-        cell.scoreLabel.text = [NSString stringWithFormat:@"%@", ((NSString *)elem[@"score"])];
-        cell.yearLabel.text = elem[@"year"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.scoreLabel.text    = [NSString stringWithFormat:@"%@", ((NSString *)elem[@"score"])];
+        cell.yearLabel.text     = elem[@"year"];
+        cell.selectionStyle     = UITableViewCellSelectionStyleNone;
     } else {
-        NSDictionary *elem = self.theDatasource[indexPath.row];
-        cell.posLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
-        cell.nameLabel.text = elem[@"name"];
-        cell.sailLabel.text = elem[@"firstname"];
+        NSDictionary *elem      = self.theDatasource[indexPath.row];
+        cell.posLabel.text      = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
+        cell.nameLabel.text     = elem[@"name"];
+        cell.sailLabel.text     = elem[@"firstname"];
 
-        cell.scoreLabel.text = [NSString stringWithFormat:@"%@", ((NSString *)elem[@"score"])];
-        cell.yearLabel.text = elem[@"year"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.scoreLabel.text    = [NSString stringWithFormat:@"%@", ((NSString *)elem[@"score"])];
+        cell.yearLabel.text     = elem[@"year"];
+        cell.selectionStyle     = UITableViewCellSelectionStyleNone;
     }
     return cell;
 #endif
@@ -197,6 +182,8 @@
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - UITableViewDelegate protocol methods
 //----------------------------------------------------------------------------------------------------------------------
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -232,12 +219,12 @@
     return textView;
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - UIViewController - User triggered actions
+//----------------------------------------------------------------------------------------------------------------------
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender
 {
-    NSLog(@"Hello! %@", segue.identifier);
-
-
 #ifdef A
     NSDictionary *elem= nil;
     NSIndexPath *selectedRowsIndexPath = nil;
@@ -246,21 +233,14 @@
     if (self.theFilteredDatasource != nil && self.theFilteredDatasource.count > 0) {
         selectedRowsIndexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
         elem = self.theFilteredDatasource[selectedRowsIndexPath.row];
-        NSLog(@"selem: %@", elem);
-
     } else {
         selectedRowsIndexPath = [self.theTableView indexPathForSelectedRow];
         elem = self.theDatasource[selectedRowsIndexPath.row];
-        NSLog(@"relem: %@", elem);
     }
     [self.theTableView deselectRowAtIndexPath:selectedRowsIndexPath animated:YES];
     detailViewController.theDataSource = elem;
-
 #else
 #endif
-
-
-
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -275,12 +255,25 @@
     return YES;
 }
 
+
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - Search filter method
 //----------------------------------------------------------------------------------------------------------------------
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
+    NSString *format =  @"(name contains[cd] %@) OR "
+                        @"(firstname contains[cd] %@) OR "
+                        @"(yob contains[cd] %@) OR "
+                        @"(club contains[cd] %@)";
+
     NSPredicate *resultPredicate = [NSPredicate
-                                    predicateWithFormat:@"(name contains[cd] %@) OR (firstname contains[cd] %@) OR (yob contains[cd] %@)",
-                                    searchText, searchText, searchText, searchText];
+                                    predicateWithFormat:format,
+                                    searchText,
+                                    searchText,
+                                    searchText,
+                                    searchText,
+                                    searchText];
+
     self.theFilteredDatasource = [self.theDatasource filteredArrayUsingPredicate:resultPredicate];
 }
 

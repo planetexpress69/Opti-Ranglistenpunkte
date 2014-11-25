@@ -1,6 +1,4 @@
 Punkte A is a small calculator to score regattas according the rules of dodv.org.
 http://www.dodv.org/sport/ranglisten/ranglistenformel/
 
-Comments or hints?
-www.jakota.de
-info@jakota.de
+Comments or hints? support@jakota.de

@@ -27,6 +27,7 @@
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         [[UIToolbar appearance] setBarTintColor:THECOLOR];
         [[UITextField appearance] setTintColor:THECOLOR];
+        [[UISearchBar appearance] setBarTintColor:THECOLOR];
     }
     else {
         [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
@@ -36,6 +37,7 @@
                                 forToolbarPosition:UIBarPositionBottom
                                         barMetrics:UIBarMetricsDefault];
         [[UIToolbar appearance] setBackgroundColor:THECOLOR];
+        [[UISearchBar appearance] setTintColor:THECOLOR];
     }
 
     NSDictionary *attrDict = @{

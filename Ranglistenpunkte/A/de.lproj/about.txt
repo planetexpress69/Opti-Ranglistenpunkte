@@ -1,6 +1,4 @@
 Punkte A ist ein kleiner Rechner, der Regatta-Platzierungen für Opti-A nach der Ranglistenformel auf www.dodv.org bewertet.
 http://www.dodv.org/sport/ranglisten/ranglistenformel/
 
-Hinweise oder Anregungen?
-www.jakota.de
-info@jakota.de
+Hinweise oder Anregungen? support@jakota.de
