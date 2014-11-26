@@ -17,7 +17,8 @@ Dependencies
 --------------------------------------
 
 The network code to load the current scoring list depends on MKNetworkKit - see [here](http://blog.mugunthkumar.com/products/ios-framework-introducing-mknetworkkit/) for more information.
-Scraping the list is done with with Kimono from [Kimonolabs](http://www.kimonolabs.com/).
+
+Code to display the ranking list depends on a JSON file at dodv.org - courtesy of [Franke Renkes](mailto:frank@renkes.de).
 
 Questions?
 ----------
