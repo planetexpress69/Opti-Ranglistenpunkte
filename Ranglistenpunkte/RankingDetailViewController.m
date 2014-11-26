@@ -11,25 +11,29 @@
 #import "SailorCell.h"
 
 @interface RankingDetailViewController() <UITableViewDataSource, UITableViewDelegate>
+// ---------------------------------------------------------------------------------------------------------------------
 @property (nonatomic, weak)     IBOutlet    UITableView                 *theTableView;
+// ---------------------------------------------------------------------------------------------------------------------
 @end
 
 @implementation RankingDetailViewController
 
+
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - Init & lifecycle
+//----------------------------------------------------------------------------------------------------------------------
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.theTableView.delegate      = self;
     self.theTableView.dataSource    = self;
-    self.title = @"Detailansicht";
+    self.title                      = @"Detailansicht";
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-}
 
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - UITableViewDataSorce protocol methods
+//----------------------------------------------------------------------------------------------------------------------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
@@ -57,31 +61,30 @@
     }
 }
 
+// ---------------------------------------------------------------------------------------------------------------------
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
 }
 
+// ---------------------------------------------------------------------------------------------------------------------
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
         case 0:
         {
-            SailorCell *cell = nil;
-            cell = (SailorCell *)[self.theTableView dequeueReusableCellWithIdentifier:@"SailorCell" forIndexPath:indexPath];
-            NSDictionary *sailor = self.theDataSource;
-
-            cell.firstnamenameLabel.text = [NSString stringWithFormat:@"%@ %@", sailor[@"firstname"], sailor[@"name"]];
-            cell.posLabel.text = [NSString stringWithFormat:@"%@", sailor[@"pos"]];
-            cell.clubLabel.text = [NSString stringWithFormat:@"%@", sailor[@"club"]];
-            cell.sailCountryLabel.text = [NSString stringWithFormat:@"%@", sailor[@"sailCountry"]];
-            cell.sailNumberLabel.text = [NSString stringWithFormat:@"%@", sailor[@"sailNumber"]];
-            cell.totalPointsLabel.text = [NSString stringWithFormat:@"%@", sailor[@"totalPoints"]];
-            cell.yobLabel.text = [NSString stringWithFormat:@"%@", sailor[@"yob"]];
-            cell.totalRunsLabel.text = [NSString stringWithFormat:@"%@", sailor[@"totalRuns"]];
-
-
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            SailorCell *cell                = (SailorCell *)[self.theTableView dequeueReusableCellWithIdentifier:@"SailorCell"
+                                                                                                    forIndexPath:indexPath];
+            NSDictionary *sailor            = self.theDataSource;
+            cell.firstnamenameLabel.text    = [NSString stringWithFormat:@"%@ %@", sailor[@"firstname"], sailor[@"name"]];
+            cell.posLabel.text              = [NSString stringWithFormat:@"%@", sailor[@"pos"]];
+            cell.clubLabel.text             = [NSString stringWithFormat:@"%@", sailor[@"club"]];
+            cell.sailCountryLabel.text      = [NSString stringWithFormat:@"%@", sailor[@"sailCountry"]];
+            cell.sailNumberLabel.text       = [NSString stringWithFormat:@"%@", sailor[@"sailNumber"]];
+            cell.totalPointsLabel.text      = [NSString stringWithFormat:@"%.2f", [sailor[@"totalPoints"]floatValue]];
+            cell.yobLabel.text              = [NSString stringWithFormat:@"%@", sailor[@"yob"]];
+            cell.totalRunsLabel.text        = [NSString stringWithFormat:@"%@", sailor[@"totalRuns"]];
+            cell.selectionStyle             = UITableViewCellSelectionStyleNone;
 
             return cell;
         }
@@ -89,17 +92,16 @@
 
         default:
         {
-            RegattaDetailCell *cell = nil;
-            cell = (RegattaDetailCell *)[self.theTableView dequeueReusableCellWithIdentifier:@"RegattaDetailCell" forIndexPath:indexPath];
-            NSDictionary *regatta = self.theDataSource[@"regatta"][indexPath.row];
-            cell.rnamelabel.text = [NSString stringWithFormat:@"%@", regatta[@"rname"]];
-            cell.sl_pointsLabel.text = [NSString stringWithFormat:@"%@", regatta[@"sl_points"]];
-            cell.sl_points_cupLabel.text = [NSString stringWithFormat:@"%@", regatta[@"sl_points_cup"]];
-            cell.positionboatsLabel.text = [NSString stringWithFormat:@"%@/%@", regatta[@"position"], regatta[@"boats"]];
-            cell.runs_totalLabel.text = [NSString stringWithFormat:@"%@", regatta[@"runs_total"]];
-            cell.runs_scoredLabel.text = [NSString stringWithFormat:@"%@", regatta[@"runs_scored"]];
-
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            RegattaDetailCell *cell         = (RegattaDetailCell *)[self.theTableView dequeueReusableCellWithIdentifier:@"RegattaDetailCell"
+                                                                                                           forIndexPath:indexPath];
+            NSDictionary *regatta           = self.theDataSource[@"regatta"][indexPath.row];
+            cell.rnamelabel.text            = [NSString stringWithFormat:@"%@", regatta[@"rname"]];
+            cell.sl_pointsLabel.text        = [NSString stringWithFormat:@"%.2f", [regatta[@"sl_points"]floatValue]];
+            cell.sl_points_cupLabel.text    = [NSString stringWithFormat:@"%.2f", [regatta[@"sl_points_cup"]floatValue]];
+            cell.positionboatsLabel.text    = [NSString stringWithFormat:@"%@/%@", regatta[@"position"], regatta[@"boats"]];
+            cell.runs_totalLabel.text       = [NSString stringWithFormat:@"%@", regatta[@"runs_total"]];
+            cell.runs_scoredLabel.text      = [NSString stringWithFormat:@"%@", regatta[@"runs_scored"]];
+            cell.selectionStyle             = UITableViewCellSelectionStyleNone;
 
             return cell;
         }
@@ -109,6 +111,9 @@
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+#pragma mark - UITableViewDelegate protocol methods
+//----------------------------------------------------------------------------------------------------------------------
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return indexPath.section == 0 ? 120.0f : 80.0f;
