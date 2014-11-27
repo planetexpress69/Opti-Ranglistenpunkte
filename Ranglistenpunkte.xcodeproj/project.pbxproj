@@ -40,6 +40,7 @@
 		5B3FB1CD1966AACC00811527 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B3FB1CF1966AACC00811527 /* Localizable.strings */; };
 		5B552F0819E3DD0800D95B56 /* Acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 5B552F0519E3DCCB00D95B56 /* Acknowledgements.markdown */; };
 		5B552F0919E3DD1500D95B56 /* Acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 5B552F0519E3DCCB00D95B56 /* Acknowledgements.markdown */; };
+		5B5C2D401A26397300883EC1 /* RankingDetailViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2D3F1A26397300883EC1 /* RankingDetailViewControllerSwift.swift */; };
 		5B75FF9B192CABD6007C3990 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B75FF9A192CABD6007C3990 /* ListViewController.m */; };
 		5B75FF9E192CC5D0007C3990 /* LovelyNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B75FF9D192CC5D0007C3990 /* LovelyNetworkEngine.m */; };
 		5B75FFA1192CD313007C3990 /* RankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B75FFA0192CD313007C3990 /* RankingCell.m */; };
@@ -97,6 +98,8 @@
 		5B3FB1D01966AAD200811527 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B3FB1D11966AAD300811527 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B552F0519E3DCCB00D95B56 /* Acknowledgements.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Acknowledgements.markdown; sourceTree = "<group>"; };
+		5B5C2D3E1A26397200883EC1 /* Ranglistenpunkte-A-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ranglistenpunkte-A-Bridging-Header.h"; sourceTree = "<group>"; };
+		5B5C2D3F1A26397300883EC1 /* RankingDetailViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingDetailViewControllerSwift.swift; sourceTree = "<group>"; };
 		5B75FF99192CABD6007C3990 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		5B75FF9A192CABD6007C3990 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		5B75FF9C192CC5D0007C3990 /* LovelyNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LovelyNetworkEngine.h; sourceTree = "<group>"; };
@@ -237,6 +240,7 @@
 				5B75FF9A192CABD6007C3990 /* ListViewController.m */,
 				5BF96AA21A2361900085C8B1 /* RankingDetailViewController.h */,
 				5BF96AA31A2361900085C8B1 /* RankingDetailViewController.m */,
+				5B5C2D3F1A26397300883EC1 /* RankingDetailViewControllerSwift.swift */,
 				5B21F5F31A1FA4160019B5A2 /* UIImage+JAKExtensions.h */,
 				5B21F5F41A1FA4160019B5A2 /* UIImage+JAKExtensions.m */,
 				5BF96AA51A2365350085C8B1 /* SailorCell.h */,
@@ -244,6 +248,7 @@
 				5BF96AA81A2365690085C8B1 /* RegattaDetailCell.h */,
 				5BF96AA91A2365690085C8B1 /* RegattaDetailCell.m */,
 				5B85B0E81920FBAA00301923 /* Supporting Files */,
+				5B5C2D3E1A26397200883EC1 /* Ranglistenpunkte-A-Bridging-Header.h */,
 			);
 			path = Ranglistenpunkte;
 			sourceTree = "<group>";
@@ -551,6 +556,7 @@
 				5B049CA21964346A006596E1 /* ListViewController.m in Sources */,
 				5B049CA31964346A006596E1 /* RegattaTableViewController.m in Sources */,
 				5B049CA41964346A006596E1 /* RankingCell.m in Sources */,
+				5B5C2D401A26397300883EC1 /* RankingDetailViewControllerSwift.swift in Sources */,
 				5B049CA51964346A006596E1 /* AboutViewController.m in Sources */,
 				5B049CA61964346A006596E1 /* LovelyNetworkEngine.m in Sources */,
 				5B049CA81964346A006596E1 /* AckViewController.m in Sources */,
@@ -642,6 +648,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Martin Kautz (5CL7HE474F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Kautz (5CL7HE474F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -651,9 +658,12 @@
 					"A=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/A/Ranglistenpunkte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Punkte A Dev";
 				PROVISIONING_PROFILE = "aa6453dc-3634-4685-b74e-8f6faae0e4a6";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ranglistenpunkte/Ranglistenpunkte-A-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SYMROOT = buildA;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -666,6 +676,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -675,9 +686,11 @@
 					"A=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Ranglistenpunkte/A/Ranglistenpunkte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Punkte A";
 				PROVISIONING_PROFILE = "644cd965-4243-400d-85ac-8414d741f98b";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ranglistenpunkte/Ranglistenpunkte-A-Bridging-Header.h";
 				SYMROOT = buildA;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

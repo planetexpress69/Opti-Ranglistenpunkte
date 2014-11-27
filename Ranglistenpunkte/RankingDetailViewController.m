@@ -82,6 +82,7 @@
             cell.sailCountryLabel.text      = [NSString stringWithFormat:@"%@", sailor[@"sailCountry"]];
             cell.sailNumberLabel.text       = [NSString stringWithFormat:@"%@", sailor[@"sailNumber"]];
             cell.totalPointsLabel.text      = [NSString stringWithFormat:@"%.2f", [sailor[@"totalPoints"]floatValue]];
+
             cell.yobLabel.text              = [NSString stringWithFormat:@"%@", sailor[@"yob"]];
             cell.totalRunsLabel.text        = [NSString stringWithFormat:@"%@", sailor[@"totalRuns"]];
             cell.selectionStyle             = UITableViewCellSelectionStyleNone;

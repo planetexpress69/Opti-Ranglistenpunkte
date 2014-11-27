@@ -464,10 +464,10 @@
             </objects>
             <point key="canvasLocation" x="1588.125" y="246.12676056338026"/>
         </scene>
-        <!--Ranking Detail View Controller-->
+        <!--Ranking Detail View Controller Swift-->
         <scene sceneID="OJe-aP-vMW">
             <objects>
-                <viewController storyboardIdentifier="RankingDetailViewController" id="Uts-hy-kCJ" customClass="RankingDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RankingDetailViewController" id="Uts-hy-kCJ" customClass="RankingDetailViewControllerSwift" customModule="Punkte_A" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Uz-IL-tmO"/>
                         <viewControllerLayoutGuide type="bottom" id="aUc-7o-b4f"/>
