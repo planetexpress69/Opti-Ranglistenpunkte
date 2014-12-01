@@ -18,9 +18,9 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
     // -----------------------------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.theTableView.delegate   = self
-        self.theTableView.dataSource = self;
-        self.title              = "Detail"
+        theTableView.delegate   = self
+        theTableView.dataSource = self;
+        title              = "Detail"
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
         case 0:
             return 1
         default:
-            if let regattas = self.theDataSource["regatta"] as? NSArray {
+            if let regattas = theDataSource["regatta"] as? NSArray {
                 var counter:Int = 0
                 for elem in regattas {
                     if let regatta = elem as? NSDictionary {
@@ -68,15 +68,15 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
             cell = tableView.dequeueReusableCellWithIdentifier("SailorCell", forIndexPath: indexPath) as SailorCell
             cell.selectionStyle = .None
             // ---------------------------------------------------------------------------------------------------------
-            cell.firstnamenameLabel.text    = (self.theDataSource["firstname"] as String) + " " + (theDataSource["name"] as String)
-            cell.clubLabel.text             = self.theDataSource["club"] as? String
-            cell.sailCountryLabel.text      = self.theDataSource["sailCountry"] as? String
-            cell.sailNumberLabel.text       = self.theDataSource["sailNumber"] as? String
+            cell.firstnamenameLabel.text    = (theDataSource["firstname"] as String) + " " + (theDataSource["name"] as String)
+            cell.clubLabel.text             = theDataSource["club"] as? String
+            cell.sailCountryLabel.text      = theDataSource["sailCountry"] as? String
+            cell.sailNumberLabel.text       = theDataSource["sailNumber"] as? String
             // ---------------------------------------------------------------------------------------------------------
             var yob: String
-            if let y = self.theDataSource["yob"] as? String {
+            if let y = theDataSource["yob"] as? String {
                 yob = y
-            } else if let y = self.theDataSource["yob"] as? Int {
+            } else if let y = theDataSource["yob"] as? Int {
                 yob = String(y)
             } else {
                 yob = "-"
@@ -84,9 +84,9 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
             cell.yobLabel.text = yob
             // ---------------------------------------------------------------------------------------------------------
             var totalPoints: String
-            if let tp = self.theDataSource["totalPoints"] as? String {
+            if let tp = theDataSource["totalPoints"] as? String {
                 totalPoints = tp
-            } else if let tp = self.theDataSource["totalPoints"] as? Float {
+            } else if let tp = theDataSource["totalPoints"] as? Float {
                 totalPoints = NSString(format:"%.2f", tp)
             } else {
                 totalPoints = "-"
@@ -94,9 +94,9 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
             cell.totalPointsLabel.text = totalPoints
             // ---------------------------------------------------------------------------------------------------------
             var totalRuns : String
-            if let tr = self.theDataSource["totalRuns"] as? String {
+            if let tr = theDataSource["totalRuns"] as? String {
                 totalRuns = tr
-            } else if let tr = self.theDataSource["totalRuns"] as? Int {
+            } else if let tr = theDataSource["totalRuns"] as? Int {
                 totalRuns = String(tr)
             } else {
                 totalRuns = "-"
@@ -104,9 +104,9 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
             cell.totalRunsLabel.text = totalRuns
             // ---------------------------------------------------------------------------------------------------------
             var pos: String
-            if let p = self.theDataSource["pos"] as? String {
+            if let p = theDataSource["pos"] as? String {
                 pos = p
-            } else if let p = self.theDataSource["pos"] as? Int {
+            } else if let p = theDataSource["pos"] as? Int {
                 pos = String(p)
             } else {
                 pos = "-"
@@ -116,7 +116,7 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
             return cell
 
         default:
-            let regatta = self.theDataSource["regatta"]?[indexPath.row] as NSDictionary
+            let regatta = theDataSource["regatta"]?[indexPath.row] as NSDictionary
             var cell:RegattaDetailCell = RegattaDetailCell()
             cell = tableView.dequeueReusableCellWithIdentifier("RegattaDetailCell", forIndexPath: indexPath) as RegattaDetailCell
             cell.selectionStyle = .None
