@@ -10,7 +10,7 @@ A tiny calculator to score regatta results. Currently there are two build target
 Environments in which to run Ranglistenpunkte
 --------------------------------------
 
-Ranglistenpunkte runs on iPhone with iOS 6.1 and above.
+Ranglistenpunkte runs on iPhone with iOS 7.0 and above. iOS 6 support is ditched as of commit [78dd9ea](https://github.com/planetexpress69/Opti-Ranglistenpunkte/commit/78dd9ea5d72873093a4d832edc412efa9e9ef25b) in favor of Swift...
 
 
 Dependencies
