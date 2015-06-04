@@ -27,7 +27,7 @@
     [super viewDidLoad];
     self.theTableView.delegate      = self;
     self.theTableView.dataSource    = self;
-    self.title                      = @"Detailansicht";
+    self.title                      = @"Detail";
 }
 
 

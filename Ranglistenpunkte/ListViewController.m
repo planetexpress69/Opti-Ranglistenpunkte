@@ -37,8 +37,7 @@
     self.title = NSLocalizedString(@"Score list opti-mv.de", @"Score list opti-mv.de");
 #endif
 
-    self.lovelyNetworkEngine                    = [[LovelyNetworkEngine alloc] initWithHostName:@"www.teambender.de"];
-
+    self.lovelyNetworkEngine                                = [[LovelyNetworkEngine alloc] initWithHostName:@"www.teambender.de"];
     self.theTableView.delegate                              = self;
     self.theTableView.dataSource                            = self;
     self.navigationController.navigationBar.translucent     = NO;
@@ -50,17 +49,18 @@
     self.searchDisplayController.searchBar.translucent      = NO;
 
     [self fetchData];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+/*
     self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
+ */
 }
 
 
@@ -230,7 +230,7 @@
     NSIndexPath *selectedRowsIndexPath = nil;
     RankingDetailViewController *detailViewController = [segue destinationViewController];
 
-    if (self.theFilteredDatasource != nil && self.theFilteredDatasource.count > 0) {
+    if (self.searchDisplayController.active) {
         selectedRowsIndexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
         elem = self.theFilteredDatasource[selectedRowsIndexPath.row];
     } else {

@@ -1,5 +1,5 @@
 //
-//  RankingDetailViewControllerSwift.swift
+//  RankingDetailViewController.swift
 //  Ranglistenpunkte
 //
 //  Created by Martin Kautz on 26.11.14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RankingDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var theTableView:UITableView!
     var theDataSource = NSDictionary()
@@ -20,14 +20,9 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
         super.viewDidLoad()
         theTableView.delegate   = self
         theTableView.dataSource = self;
-        title              = "Detail"
+        title                   = "Detail"
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // -----------------------------------------------------------------------------------------------------------------
     // MARK: - UITableViewDataSource protocol methods
@@ -64,9 +59,9 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
         switch indexPath.section {
 
         case 0:
-            var cell:SailorCell             = SailorCell()
-            cell                            = tableView.dequeueReusableCellWithIdentifier("SailorCell", forIndexPath: indexPath) as SailorCell
-            cell.selectionStyle             = .None
+            var cell:SailorCell = SailorCell()
+            cell = tableView.dequeueReusableCellWithIdentifier("SailorCell", forIndexPath: indexPath) as SailorCell
+            cell.selectionStyle = .None
             // ---------------------------------------------------------------------------------------------------------
             cell.firstnamenameLabel.text    = (theDataSource["firstname"] as String) + " " + (theDataSource["name"] as String)
             cell.clubLabel.text             = theDataSource["club"] as? String
@@ -116,10 +111,10 @@ class RankingDetailViewControllerSwift: UIViewController, UITableViewDataSource,
             return cell
 
         default:
-            let regatta                     = theDataSource["regatta"]?[indexPath.row] as NSDictionary
-            var cell:RegattaDetailCell      = RegattaDetailCell()
-            cell                            = tableView.dequeueReusableCellWithIdentifier("RegattaDetailCell", forIndexPath: indexPath) as RegattaDetailCell
-            cell.selectionStyle             = .None
+            let regatta = theDataSource["regatta"]?[indexPath.row] as NSDictionary
+            var cell:RegattaDetailCell = RegattaDetailCell()
+            cell = tableView.dequeueReusableCellWithIdentifier("RegattaDetailCell", forIndexPath: indexPath) as RegattaDetailCell
+            cell.selectionStyle = .None
             // ---------------------------------------------------------------------------------------------------------
             cell.rnamelabel.text            = regatta["rname"] as? String
             cell.sl_pointsLabel.text        = regatta["sl_points"] as? String
