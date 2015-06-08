@@ -51,6 +51,7 @@ static NSString *kArrayKey = @"storedDataArray";
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([userDefaults objectForKey:kArrayKey]) {
+        NSLog(@"> :%@", [userDefaults objectForKey:kArrayKey]);
         return ((NSArray *)[userDefaults objectForKey:kArrayKey]).mutableCopy;
     }
     return nil;

@@ -72,32 +72,42 @@
     [self.theSpinner startAnimating];
 
     [self.lovelyNetworkEngine fetchPayloadForPath:@"scrape.php" onCompletion:^(MKNetworkOperation *completedOperation) {
+
         NSError *parsingError = nil;
         NSArray *payload =
         [NSJSONSerialization JSONObjectWithData:completedOperation.responseData
                                         options:NSJSONReadingAllowFragments
                                           error:&parsingError];
+
         if (payload && !parsingError) {
             if (payload.count > 0) {
+
                 self.theDatasource = [payload sortedArrayUsingComparator:^NSComparisonResult(id obj1,
                                                                                              id obj2) {
                     int fFirst = ((NSNumber *)(NSDictionary *)obj1[@"pos"]).intValue;
                     int fSecnd = ((NSNumber *)(NSDictionary *)obj2[@"pos"]).intValue;
+                    NSLog(@" %d -> %d", fFirst, fSecnd);
                     if (fFirst > fSecnd)
                         return NSOrderedDescending;
                     else if (fFirst < fSecnd)
                         return NSOrderedAscending;
                     return NSOrderedSame;
                 }];
+
+                NSLog(@"Done!");
+
+
                 self.errorMessageKey = nil;
             }
             else {
                 self.errorMessageKey = @"NODATAERROR";
             }
+
         }
         else {
             self.errorMessageKey = @"PARSINGERROR";
         }
+
 
         [self.theTableView reloadData];
         [self.theSpinner stopAnimating];
@@ -105,6 +115,7 @@
     } onError:^(NSError *error) {
         // network error?
         DLog(@"error             : %@", error);
+
         self.errorMessageKey = @"NETWORKERROR";
         [self.theTableView reloadData];
         [self.theSpinner stopAnimating];
@@ -126,6 +137,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     RankingCell *cell = nil;
     cell = [self.theTableView dequeueReusableCellWithIdentifier:@"RankingCell" forIndexPath:indexPath];
 
@@ -136,16 +148,18 @@
         cell.nameLabel.text     = [NSString stringWithFormat:@"%@ %@", elem[@"firstname"], elem[@"name"]];
         cell.sailLabel.text     = [NSString stringWithFormat:@"%@ %@", elem[@"sailCountry"], elem[@"sailNumber"]];
         cell.scoreLabel.text    = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
-        cell.yearLabel.text     = elem[@"yob"];
+        cell.yearLabel.text     = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"yob"]).intValue];
         cell.selectionStyle     = UITableViewCellSelectionStyleDefault;
+
     } else {
         NSDictionary *elem      = self.theDatasource[indexPath.row];
         cell.posLabel.text      = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"pos"]).intValue];
         cell.nameLabel.text     = [NSString stringWithFormat:@"%@ %@", elem[@"firstname"], elem[@"name"]];
         cell.sailLabel.text     = [NSString stringWithFormat:@"%@ %@", elem[@"sailCountry"], elem[@"sailNumber"]];
         cell.scoreLabel.text    = [NSString stringWithFormat:@"%.2f", ((NSNumber *)elem[@"totalPoints"]).floatValue];
-        cell.yearLabel.text     = elem[@"yob"];
-        cell.selectionStyle     = UITableViewCellSelectionStyleDefault;
+        cell.yearLabel.text     = [NSString stringWithFormat:@"%d", ((NSNumber *)elem[@"yob"]).intValue];
+        //cell.selectionStyle     = UITableViewCellSelectionStyleDefault;
+
     }
     return cell;
 #else
@@ -170,6 +184,8 @@
     }
     return cell;
 #endif
+
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------
