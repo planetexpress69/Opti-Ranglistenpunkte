@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Qpp-nT-HVv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Qpp-nT-HVv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -217,7 +217,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccU-Cq-jSa">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccU-Cq-jSa" userLabel="ViewRight">
                                 <rect key="frame" x="508" y="127" width="72" height="72"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W0u-yg-CRq" userLabel="Regatta Races Text Field">
@@ -250,13 +250,13 @@
                             <constraint firstItem="dym-tf-g1F" firstAttribute="leading" secondItem="2AS-Aj-d6e" secondAttribute="trailing" constant="8" id="2Dr-6X-17U"/>
                             <constraint firstItem="sE1-eq-rUz" firstAttribute="leading" secondItem="XWy-VK-c2x" secondAttribute="leading" constant="20" id="2OL-8x-62s"/>
                             <constraint firstItem="dym-tf-g1F" firstAttribute="leading" secondItem="vdU-U8-s9S" secondAttribute="trailing" constant="8" id="HUd-gQ-feD"/>
-                            <constraint firstItem="sE1-eq-rUz" firstAttribute="top" secondItem="p9y-Qb-VNF" secondAttribute="bottom" constant="14" id="Ii1-F3-6LT"/>
                             <constraint firstItem="2AS-Aj-d6e" firstAttribute="leading" secondItem="XWy-VK-c2x" secondAttribute="leadingMargin" constant="4" id="J2H-5n-kEJ"/>
                             <constraint firstItem="nui-57-1j7" firstAttribute="leading" secondItem="XWy-VK-c2x" secondAttribute="leadingMargin" constant="4" id="Jej-RK-uz3"/>
                             <constraint firstItem="zsl-Df-NQR" firstAttribute="top" secondItem="ccU-Cq-jSa" secondAttribute="bottom" id="SeR-K1-m9S"/>
                             <constraint firstItem="vdU-U8-s9S" firstAttribute="leading" secondItem="XWy-VK-c2x" secondAttribute="leadingMargin" constant="4" id="Vhl-6N-AfZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ccU-Cq-jSa" secondAttribute="trailing" constant="4" id="YXO-dJ-WO9"/>
                             <constraint firstItem="ccU-Cq-jSa" firstAttribute="top" secondItem="2AS-Aj-d6e" secondAttribute="bottom" constant="8" id="Zhx-d1-GJp"/>
+                            <constraint firstItem="sE1-eq-rUz" firstAttribute="top" secondItem="p9y-Qb-VNF" secondAttribute="bottom" constant="14" id="bmY-y1-7bC"/>
                             <constraint firstItem="2AS-Aj-d6e" firstAttribute="top" secondItem="vdU-U8-s9S" secondAttribute="bottom" constant="2" id="doh-xu-03L"/>
                             <constraint firstItem="vdU-U8-s9S" firstAttribute="top" secondItem="sE1-eq-rUz" secondAttribute="bottom" constant="19" id="f7m-sJ-OZT"/>
                             <constraint firstAttribute="trailing" secondItem="zsl-Df-NQR" secondAttribute="trailing" constant="16" id="hKc-SV-XTW"/>
